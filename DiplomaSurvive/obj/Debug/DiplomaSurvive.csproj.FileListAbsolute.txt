@@ -1,0 +1,7 @@
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\bin\Debug\DiplomaSurvive.exe.config
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\bin\Debug\DiplomaSurvive.exe
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\bin\Debug\DiplomaSurvive.pdb
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\obj\Debug\DiplomaSurvive.csprojAssemblyReference.cache
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\obj\Debug\DiplomaSurvive.csproj.CoreCompileInputs.cache
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\obj\Debug\DiplomaSurvive.exe
+C:\Users\Veronika_Bridnia\Documents\Study\Diploma Survive Project\DiplomaSurvive\DiplomaSurvive\obj\Debug\DiplomaSurvive.pdb
