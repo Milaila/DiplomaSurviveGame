@@ -9,11 +9,23 @@ namespace DiplomaSurvive
     public class BaseCheck
     {
         public int Priority { get; set; } = int.MaxValue;
+        public bool IsDirty 
+        { 
+            get
+            {
+                return CheckChain?.NeedCheck() ?? false;
+            }
+        }
         public DeductionType DeductionType { get; set; } = DeductionType.Undefined;
         public ICheckStep CheckChain { protected get; set; }
-        public virtual double Check(BaseContext context)
+        public virtual double Check()
         {
-            return CheckChain?.Check(context) ?? 0;
+            return CheckChain?.Check() ?? 0;
         }
+    }
+
+    public enum ChangedValue
+    {
+
     }
 }

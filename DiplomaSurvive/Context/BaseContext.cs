@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class BaseContext
+    public class BaseContext : Context
     {
         public virtual ScoreContext Score { get; set; }
         public virtual TimeContext Time { get; set; }

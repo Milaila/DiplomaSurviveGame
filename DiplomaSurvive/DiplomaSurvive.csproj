@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BaseStore.cs" />
     <Compile Include="Checks\PersonalLifeScoreCheckStep.cs" />
+    <Compile Include="Context\Context.cs" />
     <Compile Include="Context\AContext.cs" />
     <Compile Include="Context\TimeContext.cs" />
     <Compile Include="Context\ScoreContext.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Context1.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
-    <Compile Include="Program - Copy %285%29.cs" />
+    <Compile Include="ValueChanged delegate.cs" />
     <Compile Include="Program - Copy %286%29.cs" />
     <Compile Include="Program - Copy %287%29.cs" />
     <Compile Include="DeductionType.cs" />

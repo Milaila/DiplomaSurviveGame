@@ -6,24 +6,20 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class PersonalLifeScoreCheckStep : BaseCheckStep
+    public class PersonalLifeScoreDefaultShortageCheckStep : BaseCheckStep
     {
-        public int MinScore { get; set; } = 0;
-        public int MaxScore { get; set; } = int.MaxValue;
-        public double ExcessProbability { get; set; } = 1;
-        public double ShortageProbability { get; set; } = 1;
+        public double DeductionProbability { get; set; } = 1;
 
-        protected override bool TryHandle(BaseContext context, ref double probability)
+        public PersonalLifeScoreDefaultShortageCheckStep(BaseContext context) : base(context)
         {
-            if (context.Score.PersonalLifeScore <= MinScore)
+            _context.Score.OnMinPersonalLifeScoreChanged += AskForCheck;
+            _context.Score.OnPersonalLifeScoreChanged += AskForCheck;
+        }
+        protected override bool TryHandle(ref double probability)
+        {
+            if (_context.Score.PersonalLifeScore <= _context.Score.MinPersonalLifeScore)
             {
-                probability = ExcessProbability;
-                return true;
-            }
-
-            if (context.Score.PersonalLifeScore >= MaxScore)
-            {
-                probability = ShortageProbability;
+                probability = DeductionProbability;
                 return true;
             }
 
@@ -31,21 +27,21 @@ namespace DiplomaSurvive
         }
     }
 
-    public class PersonalLifeDefaultScoreCheckStep : BaseCheckStep
+    public class PersonalLifeScoreShortageCheckStep : BaseCheckStep
     {
-        public double ExcessProbability { get; set; } = 1;
-        public double ShortageProbability { get; set; } = 1;
-        protected override bool TryHandle(BaseContext context, ref double probability)
-        {
-            if (context.Score.PersonalLifeScore <= context.Score.MinPersonalLifeScore)
-            {
-                probability = ExcessProbability;
-                return true;
-            }
+        public double DeductionProbability { get; set; } = 1;
+        public int MinScore { get; set; } = 0;
 
-            if (context.Score.PersonalLifeScore >= context.Score.MaxPersonalLifeScore)
+        public PersonalLifeScoreShortageCheckStep(BaseContext context) : base(context)
+        {
+            _context.Score.OnMinPersonalLifeScoreChanged += AskForCheck;
+            _context.Score.OnPersonalLifeScoreChanged += AskForCheck;
+        }
+        protected override bool TryHandle(ref double probability)
+        {
+            if (_context.Score.PersonalLifeScore <= MinScore)
             {
-                probability = ShortageProbability;
+                probability = DeductionProbability;
                 return true;
             }
 

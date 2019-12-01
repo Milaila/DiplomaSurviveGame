@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class TasksContext
+    public class TasksContext : Context
     {
-        public virtual double LastTask { get; set; }
-        public virtual double LastClick { get; set; }
     }
 }

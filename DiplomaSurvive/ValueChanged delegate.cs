@@ -6,4 +6,5 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    public delegate void ValueChanged();
 }

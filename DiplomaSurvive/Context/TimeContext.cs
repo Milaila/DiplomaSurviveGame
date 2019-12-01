@@ -6,9 +6,35 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class TimeContext
+    public class TimeContext : Context
     {
-        public virtual double LastTask { get; set; }
-        public virtual double LastClick { get; set; }
+        protected double _lastTaskChanged;
+        protected double _lastClickChanged;
+        public virtual double LastTask
+        {
+            get { return _lastTaskChanged; }
+            set
+            {
+                _lastTaskChanged = value;
+                OnLastTaskChanged?.Invoke();
+            }
+        }
+        public virtual double LastClick
+        {
+            get { return _lastClickChanged; }
+            set
+            {
+                _lastClickChanged = value;
+                OnLastClickChanged?.Invoke();
+            }
+        }
+        public event ValueChanged OnLastTaskChanged;
+        public event ValueChanged OnLastClickChanged;
+
+        public TimeContext()
+        {
+            OnLastClickChanged += ContextChanged;
+            OnLastTaskChanged += ContextChanged;
+        }
     }
 }

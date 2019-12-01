@@ -8,7 +8,8 @@ namespace DiplomaSurvive
 {
     public interface ICheckStep
     {
-        double Check(BaseContext context);
+        double Check();
         void SetNextStep(ICheckStep step);
+        bool NeedCheck();
     }
 }
