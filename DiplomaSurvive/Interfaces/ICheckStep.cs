@@ -8,7 +8,7 @@ namespace DiplomaSurvive
 {
     public interface ICheckStep
     {
-        (double, DeductionType) Check(BaseContext context);
+        double Check(BaseContext context);
         void SetNextStep(ICheckStep step);
     }
 }

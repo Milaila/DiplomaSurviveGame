@@ -9,7 +9,7 @@ namespace DiplomaSurvive
     public abstract class BaseCheckStep : ICheckStep
     {
         protected ICheckStep _nextStep;
-        public ICheckStep NextStep
+        public ICheckStep OrStep
         {
             set
             {
@@ -21,16 +21,15 @@ namespace DiplomaSurvive
         {
             _nextStep = step;
         }
-        public virtual (double, DeductionType) Check(BaseContext context)
+        public virtual double Check(BaseContext context)
         {
             double probability = 0;
-            DeductionType type = DeductionType.None;
-            if (TryHandle(context, ref probability, ref type) || _nextStep == null)
+            if (TryHandle(context, ref probability) || _nextStep == null)
             {
-                return (probability, type);
+                return probability;
             }
             return _nextStep.Check(context);
         }
-        protected abstract bool TryHandle(BaseContext context, ref double probability, ref DeductionType deductionType);
+        protected abstract bool TryHandle(BaseContext context, ref double probability);
     }
 }
