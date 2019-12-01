@@ -9,7 +9,7 @@ namespace DiplomaSurvive
     public abstract class BaseCheckStep : ICheckStep
     {
         protected ICheckStep _nextStep;
-        public ICheckStep OrStep
+        public ICheckStep NextStep
         {
             set
             {
