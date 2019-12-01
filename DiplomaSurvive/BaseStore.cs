@@ -8,12 +8,13 @@ namespace DiplomaSurvive
 {
     public class BaseStore<T>
     {
-        protected List<T> _elements = new List<T>();
+        protected List<T> _elements;
         protected INumberGenerator _numberGen;
 
-        public BaseStore(INumberGenerator numberGenerator = null)
+        public BaseStore(List<T> elements = null, INumberGenerator numberGenerator = null)
         {
             _numberGen = numberGenerator ?? new DefaultNumberGenerator();
+            _elements = elements ?? new List<T>();
         }
 
         public virtual T Get()
