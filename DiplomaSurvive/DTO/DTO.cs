@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class TimeContext
+    public abstract class DTO
     {
-        public virtual double LastTask { get; set; }
-        public virtual double LastClick { get; set; }
+        public int Id { get; set; }
+
+        public DTO()
+        {
+            Id = GetHashCode();
+        }
     }
 }

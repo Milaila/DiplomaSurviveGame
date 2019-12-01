@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class TimeContext
+    public enum DeductionType
     {
-        public virtual double LastTask { get; set; }
-        public virtual double LastClick { get; set; }
+        None,
+        Undefined
     }
 }
