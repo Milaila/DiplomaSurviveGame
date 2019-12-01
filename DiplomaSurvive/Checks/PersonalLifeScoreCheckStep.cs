@@ -8,7 +8,7 @@ namespace DiplomaSurvive
 {
     public class PersonalLifeScoreDefaultShortageCheckStep : BaseCheckStep
     {
-        public double DeductionProbability { get; set; } = 1;
+        public double DeductionProbability { get; set; } = 0;
 
         public PersonalLifeScoreDefaultShortageCheckStep(BaseContext context) : base(context)
         {
@@ -19,11 +19,11 @@ namespace DiplomaSurvive
         {
             if (_context.Score.PersonalLifeScore <= _context.Score.MinPersonalLifeScore)
             {
-                probability = DeductionProbability;
-                return true;
+                return false;
             }
 
-            return false;
+            probability = DeductionProbability;
+            return true;
         }
     }
 
@@ -41,11 +41,11 @@ namespace DiplomaSurvive
         {
             if (_context.Score.PersonalLifeScore <= MinScore)
             {
-                probability = DeductionProbability;
-                return true;
+                return false;
             }
 
-            return false;
+            probability = DeductionProbability;
+            return true;
         }
     }
 }

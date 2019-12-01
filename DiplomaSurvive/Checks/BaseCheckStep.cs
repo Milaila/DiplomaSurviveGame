@@ -11,11 +11,12 @@ namespace DiplomaSurvive
         protected ICheckStep _nextStep;
         protected BaseContext _context;
         protected bool _needCheck = true;
+        public event ValueChanged OnNeedCheck;
         public ICheckStep NextStep
         {
             set
             {
-                _nextStep = value;
+                SetNextStep(value);
             }
         }
 
@@ -26,7 +27,12 @@ namespace DiplomaSurvive
 
         public void SetNextStep(ICheckStep step)
         {
+            if (_nextStep != null)
+            {
+                _nextStep.OnNeedCheck -= AskForCheck;
+            }
             _nextStep = step;
+            _nextStep.OnNeedCheck += AskForCheck;
         }
         public virtual double Check()
         {
@@ -39,18 +45,11 @@ namespace DiplomaSurvive
             }
             return _nextStep.Check();
         }
-        protected abstract bool TryHandle(ref double probability);
-        public bool NeedCheck()
-        {
-            if (_needCheck)
-            {
-                return true;
-            }
-            return _nextStep?.NeedCheck() ?? false;
-        }
         protected void AskForCheck()
         {
             _needCheck = true;
+            OnNeedCheck?.Invoke();
         }
+        protected abstract bool TryHandle(ref double probability);
     }
 }

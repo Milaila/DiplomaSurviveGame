@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseStore.cs" />
+    <Compile Include="Checks\StudyScoreShortageCheckStep.cs" />
     <Compile Include="Checks\PersonalLifeScoreCheckStep.cs" />
     <Compile Include="Context\Context.cs" />
     <Compile Include="Context\AContext.cs" />

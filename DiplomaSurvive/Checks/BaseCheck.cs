@@ -8,24 +8,34 @@ namespace DiplomaSurvive
 {
     public class BaseCheck
     {
+        private ICheckStep _checkChain;
         public int Priority { get; set; } = int.MaxValue;
-        public bool IsDirty 
+        public bool IsDirty { get; private set; } = true;
+        public DeductionType DeductionType { get; set; } = DeductionType.Undefined;
+        public ICheckStep CheckChain 
         { 
-            get
+            protected get
             {
-                return CheckChain?.NeedCheck() ?? false;
+                return _checkChain;
+            }
+            set
+            {
+                if (_checkChain != null)
+                {
+                    _checkChain.OnNeedCheck -= NeedCheck;
+                }
+                _checkChain = value;
+                _checkChain.OnNeedCheck += NeedCheck;
             }
         }
-        public DeductionType DeductionType { get; set; } = DeductionType.Undefined;
-        public ICheckStep CheckChain { protected get; set; }
         public virtual double Check()
         {
+            IsDirty = false;
             return CheckChain?.Check() ?? 0;
         }
-    }
-
-    public enum ChangedValue
-    {
-
+        public void NeedCheck()
+        {
+            IsDirty = true;
+        }
     }
 }

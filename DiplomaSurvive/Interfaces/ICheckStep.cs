@@ -10,6 +10,6 @@ namespace DiplomaSurvive
     {
         double Check();
         void SetNextStep(ICheckStep step);
-        bool NeedCheck();
+        event ValueChanged OnNeedCheck;
     }
 }
