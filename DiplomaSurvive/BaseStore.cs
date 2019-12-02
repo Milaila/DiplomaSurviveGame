@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class BaseStore<T>
+    public class BaseStore<T> : IStore<T>
     {
         protected List<T> _elements;
         protected INumberGenerator _numberGen;
 
-        public BaseStore(List<T> elements = null, INumberGenerator numberGenerator = null)
+        public BaseStore(ICollection<T> elements = null, INumberGenerator numberGenerator = null)
         {
             _numberGen = numberGenerator ?? new DefaultNumberGenerator();
-            _elements = elements ?? new List<T>();
+            _elements = elements == null 
+                ? new List<T>(elements) 
+                : new List<T>();
         }
 
         public virtual T Get()
         {
             if (_elements.Count == 0)
             {
-                return default;
+                return default(T);
             }
             int num = _numberGen.Next(_elements.Count);
             return _elements[num];
