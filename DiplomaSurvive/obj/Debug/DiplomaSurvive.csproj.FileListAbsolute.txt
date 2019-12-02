@@ -14,3 +14,13 @@ C:\Users\Acer\Desktop\MSE\Study\Game Development\My Project\DiplomaSurviveGame\D
 C:\Users\Acer\Desktop\MSE\Study\Game Development\My Project\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.csproj.CopyComplete
 C:\Users\Acer\Desktop\MSE\Study\Game Development\My Project\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.exe
 C:\Users\Acer\Desktop\MSE\Study\Game Development\My Project\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.pdb
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\bin\Debug\DiplomaSurvive.exe.config
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\bin\Debug\DiplomaSurvive.exe
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\bin\Debug\DiplomaSurvive.pdb
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\bin\Debug\System.ValueTuple.dll
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\bin\Debug\System.ValueTuple.xml
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.csprojAssemblyReference.cache
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.csproj.CoreCompileInputs.cache
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.csproj.CopyComplete
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.exe
+C:\Users\Veronika_Bridnia\Documents\Diploma Survive\DiplomaSurviveGame\DiplomaSurvive\obj\Debug\DiplomaSurvive.pdb

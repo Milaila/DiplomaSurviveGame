@@ -10,7 +10,7 @@ namespace DiplomaSurvive
     {
         public double DeductionProbability { get; set; } = 1;
 
-        public PersonalLifeScoreDefaultShortageCheckStep(BaseContext context) : base(context)
+        public PersonalLifeScoreDefaultShorтtageCheckStep(BaseContext context) : base(context)
         {
             _context.Score.OnMinPersonalLifeScoreChanged += AskForCheck;
             _context.Score.OnPersonalLifeScoreChanged += AskForCheck;
@@ -20,10 +20,10 @@ namespace DiplomaSurvive
             if (_context.Score.PersonalLifeScore <= _context.Score.MinPersonalLifeScore)
             {
                 probability = DeductionProbability;
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
     }
 }
