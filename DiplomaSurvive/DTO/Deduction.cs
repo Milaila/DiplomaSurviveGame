@@ -11,6 +11,7 @@ namespace DiplomaSurvive
         public string Title { get; set; }
         public string Description { get; set; }
         public int Coefficient { get; set; }
+        public int Level { get; set; }
         public DeductionType Type { get; set; }
     }
 }

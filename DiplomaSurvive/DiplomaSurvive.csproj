@@ -47,8 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseStore.cs" />
+    <Compile Include="Checks\BaseDeductionCheck.cs" />
     <Compile Include="Checks\StudyScoreShortageCheckStep.cs" />
-    <Compile Include="Checks\PersonalLifeScoreCheckStep.cs" />
+    <Compile Include="Checks\PersonalLifeScoreShortageCheckStep.cs" />
     <Compile Include="Context\Context.cs" />
     <Compile Include="Context\AContext.cs" />
     <Compile Include="Context\TimeContext.cs" />
@@ -58,6 +59,10 @@
     <Compile Include="DefaultNumberGenerator.cs" />
     <Compile Include="DTO\Deduction.cs" />
     <Compile Include="DTO\DTO.cs" />
+    <Compile Include="DeductionStore.cs" />
+    <Compile Include="ProbabilityCoefficientService.cs" />
+    <Compile Include="Interfaces\IDeductionStore.cs" />
+    <Compile Include="Interfaces\IDeductionCheck.cs" />
     <Compile Include="Interfaces\ICheckStep.cs" />
     <Compile Include="Checks\BaseCheckStep.cs" />
     <Compile Include="Tree.cs" />

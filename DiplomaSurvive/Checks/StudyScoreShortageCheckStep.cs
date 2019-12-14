@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-     public class StudyScoreShortageCheckStep : BaseCheckStep
+    public class StudyScoreShortageCheckStep : BaseCheckStep
     {
         public double DeductionProbability { get; set; } = 1;
         public int MinScore { get; set; } = 0;
