@@ -6,4 +6,10 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    public interface INumberDistribution
+    {
+        double Min { get; set; }
+        double Max { get; set; }
+        double Next();
+    }
 }

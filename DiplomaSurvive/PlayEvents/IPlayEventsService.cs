@@ -8,9 +8,8 @@ namespace DiplomaSurvive
 {
     public interface IPlayEventsService
     {
-        double NextTime { get; set; }
+        double NextTime { get; }
         PlayEvent GetEvent();
-        void AddEvent();
-
+        void GenerateNextTime();
     }
 }

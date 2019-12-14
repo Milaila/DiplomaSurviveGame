@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseStore.cs" />
+    <Compile Include="UniformDistribution.cs" />
+    <Compile Include="Interfaces\INumberDistribution.cs" />
     <Compile Include="Main\BaseDeductionCheck.cs" />
     <Compile Include="Checks\StudyScoreShortageCheckStep.cs" />
     <Compile Include="Checks\PersonalLifeScoreShortageCheckStep.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Interfaces\ICheckStep.cs" />
     <Compile Include="Checks\BaseCheckStep.cs" />
     <Compile Include="PlayEvents\IButton.cs" />
+    <Compile Include="PlayEventsService.cs" />
     <Compile Include="PlayEvents\PlayEvent.cs" />
     <Compile Include="PlayEvents\IPlayEventsService.cs" />
     <Compile Include="Tree.cs" />
@@ -75,7 +78,6 @@
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
     <Compile Include="ValueChanged delegate.cs" />
-    <Compile Include="Program - Copy %287%29.cs" />
     <Compile Include="DeductionType.cs" />
     <Compile Include="Interfaces\IStore.cs" />
     <Compile Include="Play.cs" />
