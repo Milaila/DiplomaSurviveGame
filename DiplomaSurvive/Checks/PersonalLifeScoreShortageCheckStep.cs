@@ -34,7 +34,6 @@ namespace DiplomaSurvive
 
         public PersonalLifeScoreShortageCheckStep(BaseContext context) : base(context)
         {
-            _context.Score.OnMinPersonalLifeScoreChanged += AskForCheck;
             _context.Score.OnPersonalLifeScoreChanged += AskForCheck;
         }
         protected override bool TryHandle(ref double probability)

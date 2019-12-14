@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class PersonalLifeScoreDefaultShorтtageCheckStep : BaseCheckStep
+     public class StudyScoreShortageCheckStep : BaseCheckStep
     {
         public double DeductionProbability { get; set; } = 1;
+        public int MinScore { get; set; } = 0;
 
-        public PersonalLifeScoreDefaultShorтtageCheckStep(BaseContext context) : base(context)
+        public StudyScoreShortageCheckStep(BaseContext context) : base(context)
         {
-            _context.Score.OnMinPersonalLifeScoreChanged += AskForCheck;
-            _context.Score.OnPersonalLifeScoreChanged += AskForCheck;
+            _context.Score.OnStudyScoreChanged += AskForCheck;
         }
         protected override bool TryHandle(ref double probability)
         {
-            if (_context.Score.PersonalLifeScore <= _context.Score.MinPersonalLifeScore)
+            if (_context.Score.StudyScore <= MinScore)
             {
-                probability = DeductionProbability;
                 return false;
             }
 
+            probability = DeductionProbability;
             return true;
         }
     }
