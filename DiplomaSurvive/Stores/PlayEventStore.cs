@@ -20,7 +20,7 @@ namespace DiplomaSurvive
                 return null;
             }
             int num = _numberGen.Next(availableEl.Count);
-            return _elements[num];
+            return availableEl[num];
         }
        
     }
