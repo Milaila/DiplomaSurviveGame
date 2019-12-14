@@ -10,7 +10,7 @@ namespace DiplomaSurvive
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public EventButton LeftButton { get; set; }
-        public EventButton RightButton { get; set; }
+        public Dictionary<string, IButton> Buttons { get; set; }
+        public virtual bool IsAvailable { get; } = true;
     }
 }

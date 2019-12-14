@@ -8,9 +8,10 @@ namespace DiplomaSurvive
 {
     public interface IStore<T>
     {
-        T Get();
+        T Get(BaseContext context = null);
         void Set(T element);
         T GetByIndex(int index);
+        ICollection<T> GetAll();
         bool Remove(T element);
     }
 }

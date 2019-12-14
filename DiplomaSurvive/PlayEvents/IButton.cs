@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public interface IPlayEventsService
+    public interface IButton
     {
-        double NextTime { get; set; }
-        PlayEvent GetEvent();
-        void AddEvent();
-
+        void OnClick(BaseContext context); 
     }
 }

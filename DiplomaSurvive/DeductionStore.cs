@@ -8,18 +8,18 @@ namespace DiplomaSurvive
 {
     public class DeductionStore : IDeductionStore
     {
-        protected readonly List<Deduction> _deductions;
+        private readonly IStore<Deduction> _deductionStore;
         private readonly INumberGenerator _generator;
 
-        public DeductionStore(ICollection<Deduction> deductions, INumberGenerator generator = null)
+        public DeductionStore(IStore<Deduction> deductionStore, INumberGenerator generator = null)
         {
-            _deductions = deductions.ToList() ?? throw new ArgumentNullException();
+            _deductionStore = deductionStore ?? throw new ArgumentNullException();
             _generator = generator ?? new DefaultNumberGenerator();
         }
 
         public Deduction GetDeduction(DeductionType type, int? level = null)
         {
-            var deductions = _deductions.Where(d => d.Type == type);
+            var deductions = _deductionStore.GetAll().Where(d => d.Type == type);
             if (level.HasValue)
             {
                 deductions = deductions.Where(d => d.Level == level || d.Level <= 0);

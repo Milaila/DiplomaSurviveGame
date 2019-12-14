@@ -64,6 +64,8 @@
     <Compile Include="Interfaces\IDeductionCheck.cs" />
     <Compile Include="Interfaces\ICheckStep.cs" />
     <Compile Include="Checks\BaseCheckStep.cs" />
+    <Compile Include="PlayEvents\IButton.cs" />
+    <Compile Include="PlayEvents\PlayEvent.cs" />
     <Compile Include="PlayEvents\IPlayEventsService.cs" />
     <Compile Include="Tree.cs" />
     <Compile Include="Interfaces\ITreeElement.cs" />

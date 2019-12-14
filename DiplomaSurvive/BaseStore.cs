@@ -14,12 +14,10 @@ namespace DiplomaSurvive
         public BaseStore(ICollection<T> elements = null, INumberGenerator numberGenerator = null)
         {
             _numberGen = numberGenerator ?? new DefaultNumberGenerator();
-            _elements = elements == null 
-                ? new List<T>(elements) 
-                : new List<T>();
+            _elements = elements.ToList() ?? new List<T>();
         }
 
-        public virtual T Get()
+        public virtual T Get(BaseContext context = null)
         {
             if (_elements.Count == 0)
             {
@@ -43,6 +41,11 @@ namespace DiplomaSurvive
         public virtual bool Remove(T element)
         {
             return _elements.Remove(element);
+        }
+
+        public ICollection<T> GetAll()
+        {
+            return _elements;
         }
     }
 }
