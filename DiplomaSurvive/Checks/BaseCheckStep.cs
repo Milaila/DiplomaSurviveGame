@@ -10,7 +10,7 @@ namespace DiplomaSurvive
     {
         protected ICheckStep _nextStep;
         protected BaseContext _context;
-        protected bool _needCheck = true;
+        public bool NeedCheck { get; protected set; }
         public event ValueChanged OnNeedCheck;
         public ICheckStep NextStep
         {
@@ -37,7 +37,7 @@ namespace DiplomaSurvive
         public virtual double Check()
         {
             double probability = 0;
-            _needCheck = false;
+            NeedCheck = false;
 
             if (TryHandle(ref probability) || _nextStep == null)
             {
@@ -47,7 +47,7 @@ namespace DiplomaSurvive
         }
         protected void AskForCheck()
         {
-            _needCheck = true;
+            NeedCheck = true;
             OnNeedCheck?.Invoke();
         }
         protected abstract bool TryHandle(ref double probability);

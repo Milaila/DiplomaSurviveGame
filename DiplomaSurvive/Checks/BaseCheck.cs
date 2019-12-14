@@ -13,6 +13,7 @@ namespace DiplomaSurvive
         //public int Level;
         //public double Time;
         public bool IsDirty { get; private set; } = true;
+        public event ValueChanged OnDirty;
         public DeductionType DeductionType { get; set; } = DeductionType.Undefined;
         public ICheckStep CheckChain 
         { 
@@ -35,9 +36,10 @@ namespace DiplomaSurvive
             IsDirty = false;
             return CheckChain?.Check() ?? 0;
         }
-        public void NeedCheck()
+        public virtual void NeedCheck()
         {
             IsDirty = true;
+            OnDirty?.Invoke();
         }
     }
 }

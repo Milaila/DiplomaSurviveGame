@@ -8,7 +8,7 @@ namespace DiplomaSurvive
 {
     public class DeductionStore : IDeductionStore
     {
-        private readonly List<Deduction> _deductions;
+        protected readonly List<Deduction> _deductions;
         private readonly INumberGenerator _generator;
 
         public DeductionStore(ICollection<Deduction> deductions, INumberGenerator generator = null)

@@ -23,6 +23,7 @@ namespace DiplomaSurvive
                 _generator = value ?? new DefaultNumberGenerator();
             }
         }
+        public bool IsNecessary { get; protected set; } = true;
 
         public BaseDeductionCheck 
         (
@@ -32,14 +33,14 @@ namespace DiplomaSurvive
         )
         {
             _context = context ?? throw new ArgumentNullException("Context must be not null");
-            _checks = checks?.ToList() ?? new List<BaseCheck>();
-            _checks.OrderBy(x => x.Priority);
             _deductionStore = deductionStore ?? throw new ArgumentNullException("Deduction store must be not null");
             _generator = new DefaultNumberGenerator();
+            InitChecks(checks);
         }
 
         public Deduction CheckForDeduction()
         {
+            IsNecessary = false;
             Deduction deduction = null;
             var currChecks = _checks.Where(check => check.IsDirty);
 
@@ -57,6 +58,20 @@ namespace DiplomaSurvive
             }
 
             return deduction;
+        }
+
+        private void NeedCheck()
+        {
+            IsNecessary = true;
+        }
+
+        private void InitChecks(ICollection<BaseCheck> checks)
+        {
+            _checks = checks?.OrderBy(x => x.Priority).ToList() ?? new List<BaseCheck>();
+            foreach(var check in _checks)
+            {
+                check.OnDirty += NeedCheck;
+            }
         }
     }
 

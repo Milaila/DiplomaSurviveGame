@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public interface IDeductionCheck
+    interface IPlayEventsService
     {
-        Deduction CheckForDeduction();
-        bool IsNecessary { get; }
     }
 }
