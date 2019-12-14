@@ -11,5 +11,6 @@ namespace DiplomaSurvive
         public virtual ScoreContext Score { get; set; }
         public virtual TimeContext Time { get; set; }
         public virtual TasksContext Tasks { get; set; }
+        public virtual MainContext Main { get; set; }
     }
 }

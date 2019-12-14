@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseStore.cs" />
+    <Compile Include="Stores\PlayEventStore.cs" />
+    <Compile Include="Stores\BaseStore.cs" />
+    <Compile Include="Context\MainContext.cs" />
     <Compile Include="UniformDistribution.cs" />
     <Compile Include="Interfaces\INumberDistribution.cs" />
     <Compile Include="Main\BaseDeductionCheck.cs" />
@@ -61,13 +63,13 @@
     <Compile Include="DefaultNumberGenerator.cs" />
     <Compile Include="DTO\Deduction.cs" />
     <Compile Include="DTO\DTO.cs" />
-    <Compile Include="DeductionStore.cs" />
+    <Compile Include="Stores\DeductionStore.cs" />
     <Compile Include="Interfaces\IDeductionStore.cs" />
     <Compile Include="Interfaces\IDeductionCheck.cs" />
     <Compile Include="Interfaces\ICheckStep.cs" />
     <Compile Include="Checks\BaseCheckStep.cs" />
     <Compile Include="PlayEvents\IButton.cs" />
-    <Compile Include="PlayEventsService.cs" />
+    <Compile Include="PlayEvents\PlayEventsService.cs" />
     <Compile Include="PlayEvents\PlayEvent.cs" />
     <Compile Include="PlayEvents\IPlayEventsService.cs" />
     <Compile Include="Tree.cs" />

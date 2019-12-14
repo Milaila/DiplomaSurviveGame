@@ -11,6 +11,10 @@ namespace DiplomaSurvive
         public string Title { get; set; }
         public string Description { get; set; }
         public Dictionary<string, IButton> Buttons { get; set; }
-        public virtual bool IsAvailable { get; } = true;
+        //public virtual bool IsAvailable { get; } = true;
+        public virtual bool IsAvailable (BaseContext context = null)
+        {
+            return true;
+        }
     }
 }
