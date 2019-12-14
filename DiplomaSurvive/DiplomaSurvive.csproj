@@ -60,7 +60,6 @@
     <Compile Include="DTO\Deduction.cs" />
     <Compile Include="DTO\DTO.cs" />
     <Compile Include="DeductionStore.cs" />
-    <Compile Include="ProbabilityCoefficientService.cs" />
     <Compile Include="Interfaces\IDeductionStore.cs" />
     <Compile Include="Interfaces\IDeductionCheck.cs" />
     <Compile Include="Interfaces\ICheckStep.cs" />
