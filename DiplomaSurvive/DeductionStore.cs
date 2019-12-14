@@ -25,29 +25,11 @@ namespace DiplomaSurvive
                 deductions = deductions.Where(d => d.Level == level || d.Level <= 0);
             }
 
-            int maxNumber = 0;
-            foreach (var deduction in deductions)
-            {
-                maxNumber += deduction.Coefficient <= 0 ? 1 : deduction.Coefficient;
-            }
+            int? index = _generator.IndexByCoefficients(deductions.Select(x => x.Coefficient).ToList());
 
-            if (maxNumber == 0)
-            {
-                return null;
-            }
-
-            int resNumber = _generator.Next(0, maxNumber);
-            int currNumber = 0;
-            foreach (var deduction in deductions)
-            {
-                currNumber += deduction.Coefficient;
-                if (resNumber < currNumber)
-                {
-                    return deduction;
-                }
-            }
-
-            return null;
+            return index == null 
+                ? null 
+                : deductions.ToList()[index.Value];
         }
     }
 }

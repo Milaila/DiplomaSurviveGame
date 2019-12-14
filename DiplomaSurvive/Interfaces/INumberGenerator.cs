@@ -14,5 +14,6 @@ namespace DiplomaSurvive
         double NextDouble();
         double NextDouble01();
         double NextDouble(double max);
+        int? IndexByCoefficients(List<int> coefficients);
     }
 }

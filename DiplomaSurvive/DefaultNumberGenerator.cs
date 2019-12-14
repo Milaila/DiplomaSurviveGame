@@ -33,5 +33,31 @@ namespace DiplomaSurvive
         {
             return (_randomGenerator.NextDouble() % 1.0f) * max;
         }
+        public int? IndexByCoefficients(List<int> coefficients)
+        {
+            int maxNumber = 0;
+            foreach (var coef in coefficients)
+            {
+                maxNumber += coef <= 0 ? 1 : coef;
+            }
+
+            if (maxNumber == 0)
+            {
+                return null;
+            }
+
+            int resNumber = Next(0, maxNumber);
+            int currNumber = 0;
+            for (int i = 0; i < coefficients.Count; i++)
+            {
+                currNumber += coefficients[i];
+                if (resNumber < currNumber)
+                {
+                    return i;
+                }
+            }
+
+            return null;
+        }
     }
 }

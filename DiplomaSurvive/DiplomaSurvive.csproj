@@ -72,7 +72,6 @@
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
     <Compile Include="ValueChanged delegate.cs" />
-    <Compile Include="Program - Copy %286%29.cs" />
     <Compile Include="Program - Copy %287%29.cs" />
     <Compile Include="DeductionType.cs" />
     <Compile Include="Interfaces\IStore.cs" />
