@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamPage : ActionPage<bool>
+    public class Page
     {
-        public ExamPageType Type { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

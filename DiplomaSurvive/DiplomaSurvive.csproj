@@ -52,6 +52,7 @@
     <Compile Include="Exams\ExamTree.cs" />
     <Compile Include="Exams\ExamNode.cs" />
     <Compile Include="Exams\ExamPage.cs" />
+    <Compile Include="PlayEvents\Page.cs" />
     <Compile Include="PlayEvents\ActionPage.cs" />
     <Compile Include="PlayEvents\Button.cs" />
     <Compile Include="Stores\PlayEventStore.cs" />

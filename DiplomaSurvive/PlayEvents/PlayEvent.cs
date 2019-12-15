@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class PlayEvent : ActionPage
+    public class PlayEvent : ActionPage<Page>
     {
         public virtual bool IsAvailable (BaseContext context = null)
         {

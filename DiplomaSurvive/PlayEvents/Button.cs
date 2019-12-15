@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class Button
+    public class Button<T>
     {
         public string Title { get; set; }
         public event ValueChanged OnClickEvent;
 
-        public virtual void OnClick(BaseContext context)
+        public virtual T OnClick(BaseContext context)
         {
             OnClickEvent?.Invoke();
+            return default(T);
         }
     }
 }
