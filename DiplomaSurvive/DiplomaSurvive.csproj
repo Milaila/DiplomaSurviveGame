@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exams\IExam.cs" />
+    <Compile Include="Exams\MoveDirection.cs" />
+    <Compile Include="Exams\ExamPageType.cs" />
+    <Compile Include="Exams\ExamTree.cs" />
+    <Compile Include="Exams\ExamNode.cs" />
+    <Compile Include="Exams\ExamPage.cs" />
+    <Compile Include="PlayEvents\ActionPage.cs" />
+    <Compile Include="PlayEvents\Button.cs" />
     <Compile Include="Stores\PlayEventStore.cs" />
     <Compile Include="Stores\BaseStore.cs" />
     <Compile Include="Context\MainContext.cs" />
@@ -68,15 +76,12 @@
     <Compile Include="Interfaces\IDeductionCheck.cs" />
     <Compile Include="Interfaces\ICheckStep.cs" />
     <Compile Include="Checks\BaseCheckStep.cs" />
-    <Compile Include="PlayEvents\IButton.cs" />
     <Compile Include="PlayEvents\PlayEventsService.cs" />
     <Compile Include="PlayEvents\PlayEvent.cs" />
     <Compile Include="PlayEvents\IPlayEventsService.cs" />
-    <Compile Include="Tree.cs" />
     <Compile Include="Interfaces\ITreeElement.cs" />
     <Compile Include="Interfaces\ILeaf.cs" />
     <Compile Include="Interfaces\INode.cs" />
-    <Compile Include="Context1.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
     <Compile Include="ValueChanged delegate.cs" />

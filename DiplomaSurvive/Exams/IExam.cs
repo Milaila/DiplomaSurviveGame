@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiplomaSurvive
+namespace DiplomaSurvive.Exams
 {
-    public interface IButton
+    public interface IExam
     {
-        void OnClick(BaseContext context); 
+        void Start();
+        ExamPage Next();
     }
 }

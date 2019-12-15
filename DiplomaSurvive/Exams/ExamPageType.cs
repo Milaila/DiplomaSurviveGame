@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class PlayEvent : ActionPage
+    public enum ExamPageType
     {
-        public virtual bool IsAvailable (BaseContext context = null)
-        {
-            return true;
-        }
+        InProgress,
+        Fail,
+        Success
     }
 }
