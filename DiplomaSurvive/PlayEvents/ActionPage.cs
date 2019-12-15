@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ActionPage<TButton> : Page
+    public class ActionPage<TButton> where TButton : Button
     {
-        public List<Button<TButton>> Buttons { get; } = new List<Button<TButton>>();
+        public List<TButton> Buttons { get; } = new List<TButton>();
     }
 }

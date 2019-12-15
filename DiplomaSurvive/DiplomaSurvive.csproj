@@ -52,6 +52,7 @@
     <Compile Include="Exams\ExamTree.cs" />
     <Compile Include="Exams\ExamNode.cs" />
     <Compile Include="Exams\ExamPage.cs" />
+    <Compile Include="Exams\ExamButton.cs" />
     <Compile Include="PlayEvents\Page.cs" />
     <Compile Include="PlayEvents\ActionPage.cs" />
     <Compile Include="PlayEvents\Button.cs" />
@@ -80,9 +81,6 @@
     <Compile Include="PlayEvents\PlayEventsService.cs" />
     <Compile Include="PlayEvents\PlayEvent.cs" />
     <Compile Include="PlayEvents\IPlayEventsService.cs" />
-    <Compile Include="Interfaces\ITreeElement.cs" />
-    <Compile Include="Interfaces\ILeaf.cs" />
-    <Compile Include="Interfaces\INode.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
     <Compile Include="ValueChanged delegate.cs" />
