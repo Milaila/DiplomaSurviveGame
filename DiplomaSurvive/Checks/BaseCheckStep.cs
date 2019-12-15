@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class BaseCheckStep : ICheckStep
+    public abstract class BaseCheckStep : ICheckStep, ICloneable<BaseCheckStep>
     {
         protected ICheckStep _nextStep;
         protected BaseContext _context;
@@ -51,7 +51,10 @@ namespace DiplomaSurvive
             OnNeedCheck?.Invoke();
         }
         protected abstract bool TryHandle(ref double probability);
-
-        public abstract ICheckStep Clone();
+        ICheckStep ICloneable<ICheckStep>.Clone()
+        {
+            return (this as ICloneable<BaseCheckStep>).Clone();
+        }
+        public abstract BaseCheckStep Clone();
     }
 }

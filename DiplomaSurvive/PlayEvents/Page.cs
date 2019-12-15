@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class Page
+    public class Page : ICloneable<Page>
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -16,7 +16,7 @@ namespace DiplomaSurvive
         {
             OnCloseEvent?.Invoke();
         }
-        public virtual Page Clone()
+        Page ICloneable<Page>.Clone()
         {
             return new Page
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class BaseCheck
+    public class BaseCheck : ICloneable<BaseCheck>
     {
         private ICheckStep _checkChain;
         public int Priority { get; set; } = int.MaxValue;
@@ -38,6 +38,16 @@ namespace DiplomaSurvive
         {
             IsDirty = true;
             OnDirty?.Invoke();
+        }
+
+        BaseCheck ICloneable<BaseCheck>.Clone()
+        {
+            return new BaseCheck
+            {
+                CheckChain = CheckChain.Clone(),
+                Priority = Priority,
+                DeductionType = DeductionType
+            };
         }
     }
 }

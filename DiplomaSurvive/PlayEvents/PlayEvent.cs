@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class PlayEvent : ActionPage<Button<Page>>
+    public class PlayEvent : ActionPage<Button<Page>>, ICloneable<PlayEvent>
     {
-        public virtual bool IsAvailable (BaseContext context = null)
+        public virtual bool IsAvailable(BaseContext context = null)
         {
             return true;
         }
-        public override Page Clone()
+        PlayEvent ICloneable<PlayEvent>.Clone()
         {
             var page = new PlayEvent
             {

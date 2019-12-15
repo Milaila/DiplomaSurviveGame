@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class Button<T> : Button
+    public class Button<T> : Button, ICloneable<Button<T>>
     {
         public override event ValueChanged OnClickEvent;
         public virtual T OnClickFunc(BaseContext context = null)
@@ -14,7 +14,8 @@ namespace DiplomaSurvive
             OnClickEvent?.Invoke();
             return default(T);
         }
-        public override Button Clone()
+
+        Button<T> ICloneable<Button<T>>.Clone()
         {
             return new Button<T>
             {
@@ -23,7 +24,7 @@ namespace DiplomaSurvive
         }
     }
 
-    public class Button
+    public class Button : ICloneable<Button>
     {
         public string Title { get; set; }
         public virtual event ValueChanged OnClickEvent;
@@ -32,7 +33,7 @@ namespace DiplomaSurvive
         {
             OnClickEvent?.Invoke();
         }
-        public virtual Button Clone()
+        Button ICloneable<Button>.Clone()
         {
             return new Button
             {

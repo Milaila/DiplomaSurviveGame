@@ -6,20 +6,32 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamTree : IExam
+    public class ExamTree : IExam, ICloneable<ExamTree>, ICloneable<IExam>
     {
         public ExamPage RootPage { get; set; }
         public int Level { get; set; }
         public ExamType Type { get; set; }
+        protected ICloneable<ExamPage> CloneableRootPage
+        {
+            get
+            {
+                return RootPage;
+            }
+        }
+
         public virtual ExamPage Start()
         {
             return RootPage;
         }
-        public IExam Clone()
+        IExam ICloneable<IExam>.Clone()
+        {
+            return (this as ICloneable<ExamTree>).Clone();
+        }
+        ExamTree ICloneable<ExamTree>.Clone()
         {
             return new ExamTree
             {
-                RootPage = (ExamPage)RootPage.Clone(),
+                RootPage = CloneableRootPage.Clone(),
                 Level = Level,
                 Type = Type
             };

@@ -25,7 +25,8 @@ namespace DiplomaSurvive
             probability = DeductionProbability;
             return true;
         }
-        public override ICheckStep Clone()
+
+        public override BaseCheckStep Clone()
         {
             return new PersonalLifeScoreDefaultShortageCheckStep(_context)
             {
@@ -54,7 +55,7 @@ namespace DiplomaSurvive
             probability = DeductionProbability;
             return true;
         }
-        public override ICheckStep Clone()
+        public override BaseCheckStep Clone()
         {
             return new PersonalLifeScoreShortageCheckStep(_context)
             {

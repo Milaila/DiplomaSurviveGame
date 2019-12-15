@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamButton: Button<ExamPage>
+    public class ExamButton: Button<ExamPage>, ICloneable<ExamButton>
     {
         public double CurrProbability { get; protected set; } = 1;
         public double DeductionCoefficient { get; set; } = 1;
@@ -14,6 +14,27 @@ namespace DiplomaSurvive
         public ExamFailPage FailPage { get; set; } = new ExamFailPage();
         public ExamSuccessPage SuccessPage { get; set; } = new ExamSuccessPage();
         public INumberGenerator NumberGenerator { get; set; } = new DefaultNumberGenerator();
+        protected ICloneable<ExamPage> CloneableNextPage
+        {
+            get
+            {
+                return NextPage;
+            }
+        }
+        protected ICloneable<ExamFailPage> CloneableFailPage
+        {
+            get
+            {
+                return FailPage;
+            }
+        }
+        protected ICloneable<ExamSuccessPage> CloneableSuccessPage
+        {
+            get
+            {
+                return SuccessPage;
+            }
+        }
 
         public void SetDeductionProbability(double probability)
         {
@@ -35,17 +56,18 @@ namespace DiplomaSurvive
 
             return FailPage;
         }
-        public override Button Clone()
+
+        ExamButton ICloneable<ExamButton>.Clone()
         {
             return new ExamButton
             {
                 Title = Title,
                 CurrProbability = CurrProbability,
                 DeductionCoefficient = DeductionCoefficient,
-                NextPage = NextPage.Clone() as ExamPage,
+                NextPage = CloneableNextPage.Clone(),
                 NumberGenerator = NumberGenerator,
-                SuccessPage = SuccessPage.Clone() as ExamSuccessPage,
-                FailPage = FailPage.Clone() as ExamFailPage,
+                SuccessPage = CloneableSuccessPage.Clone(),
+                FailPage = CloneableFailPage.Clone(),
             };
         }
     }

@@ -6,9 +6,53 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamPage : ActionPage<ExamButton>
+    public class ExamPage : ActionPage<ExamButton>, ICloneable<ExamPage>
     {
         public virtual ExamPageType Type { get; set; }
+        public virtual ExamButton LeftButton
+        {
+            get
+            {
+                return Buttons.Count > 0 ? Buttons[0] : null;
+            }
+            set
+            {
+                ICloneable<ExamButton> cloneable = value;
+                var button = cloneable.Clone();
+                if (Buttons.Count > 0)
+                {
+                    Buttons[0] = button;
+                }
+                else
+                {
+                    Buttons.Add(button);
+                }
+            }
+        }
+        public virtual ExamButton RightButton
+        {
+            get
+            {
+                return Buttons.Count > 1 ? Buttons[1] : null;
+            }
+            set
+            {
+                ICloneable<ExamButton> cloneable = value;
+                var button = cloneable.Clone();
+                if (Buttons.Count > 1)
+                {
+                    Buttons[1] = button;
+                }
+                else
+                {
+                    if (Buttons.Count == 0)
+                    {
+                        Buttons.Add(new ExamButton());
+                    }
+                    Buttons.Add(button);
+                }
+            }
+        }
 
         public void Act(double probability)
         {
@@ -17,7 +61,7 @@ namespace DiplomaSurvive
                 button.SetDeductionProbability(probability);
             }
         }
-        public override Page Clone()
+        ExamPage ICloneable<ExamPage>.Clone()
         {
             var page = new ExamPage
             {

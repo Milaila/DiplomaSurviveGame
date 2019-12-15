@@ -48,10 +48,10 @@
   <ItemGroup>
     <Compile Include="Exams\ExamFailPage.cs" />
     <Compile Include="Exams\ExamSuccessPage.cs" />
-    <Compile Include="Exams\IExam.cs" />
+    <Compile Include="Interfaces\ICloneable generic.cs" />
+    <Compile Include="Interfaces\IExam.cs" />
     <Compile Include="Exams\ExamService.cs" />
-    <Compile Include="Exams\IExamService.cs" />
-    <Compile Include="Exams\MoveDirection.cs" />
+    <Compile Include="Interfaces\IExamService.cs" />
     <Compile Include="Exams\ExamPageType.cs" />
     <Compile Include="Exams\ExamTree.cs" />
     <Compile Include="Exams\ExamType.cs" />
@@ -83,7 +83,7 @@
     <Compile Include="Checks\BaseCheckStep.cs" />
     <Compile Include="PlayEvents\PlayEventsService.cs" />
     <Compile Include="PlayEvents\PlayEvent.cs" />
-    <Compile Include="PlayEvents\IPlayEventsService.cs" />
+    <Compile Include="Interfaces\IPlayEventsService.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
     <Compile Include="ValueChanged delegate.cs" />
@@ -97,6 +97,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Exams\EIT\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

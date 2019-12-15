@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamFailPage : ExamPage
+    public class ExamFailPage : ExamPage, ICloneable<ExamFailPage>
     {
         public override ExamPageType Type
         {
@@ -15,7 +15,7 @@ namespace DiplomaSurvive
                 return ExamPageType.Fail;
             }
         }
-        public override Page Clone()
+        ExamFailPage ICloneable<ExamFailPage>.Clone()
         {
             var page = new ExamFailPage
             {

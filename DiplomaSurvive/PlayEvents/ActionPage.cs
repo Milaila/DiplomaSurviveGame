@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ActionPage<TButton> : Page
-        where TButton : Button
+    public class ActionPage<TButton> : Page, ICloneable<ActionPage<TButton>>
+        where TButton : Button, ICloneable<TButton>
     {
         public virtual List<TButton> Buttons { get; } = new List<TButton>();
         public virtual void AddButton(TButton button)
         {
-            Buttons.Add(button.Clone() as TButton);
+            Buttons.Add(button.Clone());
         }
-        public override Page Clone()
+
+        ActionPage<TButton> ICloneable<ActionPage<TButton>>.Clone()
         {
             var page = new ActionPage<TButton>
             {

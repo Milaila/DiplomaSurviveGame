@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public interface ICheckStep
+    public interface ICheckStep: ICloneable<ICheckStep>
     {
         event ValueChanged OnNeedCheck;
         double Check();
         void SetNextStep(ICheckStep step);
-        ICheckStep Clone();
     }
 }

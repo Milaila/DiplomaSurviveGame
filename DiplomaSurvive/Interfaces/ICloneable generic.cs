@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public interface IExam: ICloneable<IExam>
+    public interface ICloneable<T>
     {
-        int Level { get; set; }
-        ExamType Type { get; set; }
-        ExamPage Start();
+        T Clone();
     }
 }

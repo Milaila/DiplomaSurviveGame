@@ -10,18 +10,18 @@ namespace DiplomaSurvive
     {
         public int Num { get; set; } = 1;
 
-        public virtual A Clone1()
+        public virtual object Clone1()
         {
             return new A
             {
                 Num = Num
             };
         }
-        public virtual A Clone2()
+        public virtual object Clone2()
         {
             return Clone1();
         }
-        public virtual A Clone3()
+        public virtual object Clone3()
         {
             return Clone1();
         }
@@ -32,6 +32,14 @@ namespace DiplomaSurvive
         public void Smart()
         {
 
+        }
+        public override object Clone2()
+        {
+            return new C
+            {
+                Num = Num,
+                Str = Str
+            };
         }
     }
     public class B : C
@@ -45,7 +53,7 @@ namespace DiplomaSurvive
         //    return b1;
         //    //return base.Clone1();
         //}
-        public override A Clone2()
+        public override object Clone2()
         {
             return new B
             {
@@ -54,7 +62,7 @@ namespace DiplomaSurvive
                 Str = Str
             };
         }
-        public override A Clone3()
+        public override object Clone3()
         {
             return (A) new B
             {
@@ -63,7 +71,7 @@ namespace DiplomaSurvive
                 Str = Str
             };
         }
-        public virtual B Clone5()
+        public virtual object Clone5()
         {
             return new B
             {
@@ -96,20 +104,20 @@ namespace DiplomaSurvive
                 Num = 4,
                 Type = "s4"
             };
-            C c1 = (B)b1.Clone1();
+            C c1 = (B)b1.Clone2();
             Console.WriteLine("A a1 = new A");
-            Console.WriteLine(a1.Clone1().Num);
-            Console.WriteLine(a1.Clone2().Num);
-            Console.WriteLine(a1.Clone3().Num);
+            Console.WriteLine(((A)a1.Clone1()).Num);
+            Console.WriteLine(((A)a1.Clone2()).Num);
+            Console.WriteLine(((A)a1.Clone3()).Num);
             Console.WriteLine("A b1 = new B");
-            Console.WriteLine(b1.Clone1().Num + ((A)b1.Clone1()).Num);
-            Console.WriteLine(b1.Clone2().Num + ((B)b1.Clone1()).Str);
-            Console.WriteLine(b1.Clone3().Num + ((B)b1.Clone1()).Str);
+            //Console.WriteLine(((C)b1.Clone1()).Num + ((A)b1.Clone1()).Num);
+            Console.WriteLine(((C)b1.Clone2()).Num + ((B)b1.Clone1()).Str);
+            Console.WriteLine(((C)b1.Clone3()).Num + ((B)b1.Clone1()).Str);
             Console.WriteLine("B b2 = new B");
-            Console.WriteLine(b2.Clone1().Num + ((B)b2.Clone1()).Str);
-            Console.WriteLine(b2.Clone2().Num + ((B)b2.Clone2()).Str);
-            Console.WriteLine(b2.Clone3().Num + ((B)b2.Clone3()).Str);
-            Console.WriteLine(b2.Clone5().Num + b2.Clone5().Type);
+            Console.WriteLine(((C)b2.Clone1()).Num + ((B)b2.Clone1()).Str);
+            Console.WriteLine(((C)b2.Clone2()).Num + ((B)b2.Clone2()).Str);
+            Console.WriteLine(((C)b2.Clone3()).Num + ((B)b2.Clone3()).Str);
+            Console.WriteLine(((C)b2.Clone5()).Num + ((B)b2.Clone5()).Type);
             //Console.WriteLine(b2.Clone6().Num + b2.Clone6().Type);
 
             Console.ReadKey();
