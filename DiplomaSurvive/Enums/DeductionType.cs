@@ -9,6 +9,7 @@ namespace DiplomaSurvive
     public enum DeductionType
     {
         None,
-        Undefined
+        Undefined,
+        FailExam
     }
 }

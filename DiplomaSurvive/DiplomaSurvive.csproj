@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\EventsContext.cs" />
+    <Compile Include="StateService.cs" />
+    <Compile Include="StateKey.cs" />
+    <Compile Include="Interfaces\IStateService.cs" />
+    <Compile Include="Enums\EventType.cs" />
+    <Compile Include="Enums\PlayState.cs" />
+    <Compile Include="DefaultStateMachine.cs" />
     <Compile Include="Exams\ExamFailPage.cs" />
     <Compile Include="Exams\ExamSuccessPage.cs" />
     <Compile Include="Interfaces\ICloneable generic.cs" />
@@ -63,7 +70,7 @@
     <Compile Include="Stores\PlayEventStore.cs" />
     <Compile Include="Stores\BaseStore.cs" />
     <Compile Include="Context\MainContext.cs" />
-    <Compile Include="UniformDistribution.cs" />
+    <Compile Include="Number Generators\UniformDistribution.cs" />
     <Compile Include="Interfaces\INumberDistribution.cs" />
     <Compile Include="Main\BaseDeductionCheck.cs" />
     <Compile Include="Checks\StudyScoreShortageCheckStep.cs" />
@@ -73,7 +80,7 @@
     <Compile Include="Context\ScoreContext.cs" />
     <Compile Include="Context\TasksContext.cs" />
     <Compile Include="Context\BaseContext.cs" />
-    <Compile Include="DefaultNumberGenerator.cs" />
+    <Compile Include="Number Generators\DefaultNumberGenerator.cs" />
     <Compile Include="DTO\Deduction.cs" />
     <Compile Include="DTO\DTO.cs" />
     <Compile Include="Stores\DeductionStore.cs" />
@@ -87,7 +94,7 @@
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
     <Compile Include="ValueChanged delegate.cs" />
-    <Compile Include="DeductionType.cs" />
+    <Compile Include="Enums\DeductionType.cs" />
     <Compile Include="Interfaces\IStore.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Program.cs" />
