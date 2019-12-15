@@ -16,5 +16,13 @@ namespace DiplomaSurvive
         {
             OnCloseEvent?.Invoke();
         }
+        public virtual Page Clone()
+        {
+            return new Page
+            {
+                Title = Title,
+                Description = Description
+            };
+        }
     }
 }

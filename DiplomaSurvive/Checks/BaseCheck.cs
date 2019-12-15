@@ -10,8 +10,6 @@ namespace DiplomaSurvive
     {
         private ICheckStep _checkChain;
         public int Priority { get; set; } = int.MaxValue;
-        //public int Level;
-        //public double Time;
         public bool IsDirty { get; private set; } = true;
         public event ValueChanged OnDirty;
         public DeductionType DeductionType { get; set; } = DeductionType.Undefined;

@@ -12,5 +12,18 @@ namespace DiplomaSurvive
         {
             return true;
         }
+        public override Page Clone()
+        {
+            var page = new PlayEvent
+            {
+                Title = Title,
+                Description = Description,
+            };
+            foreach (var button in Buttons)
+            {
+                page.AddButton(button);
+            }
+            return page;
+        }
     }
 }

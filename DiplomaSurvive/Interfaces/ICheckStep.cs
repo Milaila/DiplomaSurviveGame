@@ -8,8 +8,9 @@ namespace DiplomaSurvive
 {
     public interface ICheckStep
     {
+        event ValueChanged OnNeedCheck;
         double Check();
         void SetNextStep(ICheckStep step);
-        event ValueChanged OnNeedCheck;
+        ICheckStep Clone();
     }
 }

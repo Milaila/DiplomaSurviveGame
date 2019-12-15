@@ -25,6 +25,14 @@ namespace DiplomaSurvive
             probability = DeductionProbability;
             return true;
         }
+        public override ICheckStep Clone()
+        {
+            return new PersonalLifeScoreDefaultShortageCheckStep(_context)
+            {
+                NextStep = _nextStep.Clone(),
+                DeductionProbability = DeductionProbability
+            };
+        }
     }
 
     public class PersonalLifeScoreShortageCheckStep : BaseCheckStep
@@ -45,6 +53,15 @@ namespace DiplomaSurvive
 
             probability = DeductionProbability;
             return true;
+        }
+        public override ICheckStep Clone()
+        {
+            return new PersonalLifeScoreShortageCheckStep(_context)
+            {
+                NextStep = _nextStep.Clone(),
+                DeductionProbability = DeductionProbability,
+                MinScore = MinScore
+            };
         }
     }
 }

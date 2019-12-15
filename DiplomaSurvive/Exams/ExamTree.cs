@@ -15,5 +15,14 @@ namespace DiplomaSurvive
         {
             return RootPage;
         }
+        public IExam Clone()
+        {
+            return new ExamTree
+            {
+                RootPage = (ExamPage)RootPage.Clone(),
+                Level = Level,
+                Type = Type
+            };
+        }
     }
 }

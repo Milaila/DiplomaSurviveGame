@@ -69,7 +69,6 @@
     <Compile Include="Checks\StudyScoreShortageCheckStep.cs" />
     <Compile Include="Checks\PersonalLifeScoreShortageCheckStep.cs" />
     <Compile Include="Context\Context.cs" />
-    <Compile Include="Context\AContext.cs" />
     <Compile Include="Context\TimeContext.cs" />
     <Compile Include="Context\ScoreContext.cs" />
     <Compile Include="Context\TasksContext.cs" />

@@ -15,5 +15,19 @@ namespace DiplomaSurvive
                 return ExamPageType.Success;
             }
         }
+        public override Page Clone()
+        {
+            var page = new ExamSuccessPage
+            {
+                Title = Title,
+                Description = Description,
+                Type = ExamPageType.Success
+            };
+            foreach (var button in Buttons)
+            {
+                page.AddButton(button);
+            }
+            return page;
+        }
     }
 }

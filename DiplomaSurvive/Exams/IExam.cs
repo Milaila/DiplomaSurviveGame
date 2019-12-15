@@ -11,5 +11,6 @@ namespace DiplomaSurvive
         int Level { get; set; }
         ExamType Type { get; set; }
         ExamPage Start();
+        IExam Clone();
     }
 }

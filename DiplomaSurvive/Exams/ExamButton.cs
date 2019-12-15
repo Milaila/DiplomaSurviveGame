@@ -19,9 +19,9 @@ namespace DiplomaSurvive
         {
             CurrProbability = probability * DeductionCoefficient;
         }
-        public override ExamPage OnClick (BaseContext context = null)
+        public override ExamPage OnClickFunc (BaseContext context = null)
         {
-            base.OnClick(context);
+            base.OnClickFunc(context);
             if (NextPage != null)
             {
                 NextPage.Act(CurrProbability);
@@ -34,6 +34,19 @@ namespace DiplomaSurvive
             }
 
             return FailPage;
+        }
+        public override Button Clone()
+        {
+            return new ExamButton
+            {
+                Title = Title,
+                CurrProbability = CurrProbability,
+                DeductionCoefficient = DeductionCoefficient,
+                NextPage = NextPage.Clone() as ExamPage,
+                NumberGenerator = NumberGenerator,
+                SuccessPage = SuccessPage.Clone() as ExamSuccessPage,
+                FailPage = FailPage.Clone() as ExamFailPage,
+            };
         }
     }
 }

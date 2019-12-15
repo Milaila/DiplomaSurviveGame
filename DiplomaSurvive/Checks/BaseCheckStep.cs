@@ -51,5 +51,7 @@ namespace DiplomaSurvive
             OnNeedCheck?.Invoke();
         }
         protected abstract bool TryHandle(ref double probability);
+
+        public abstract ICheckStep Clone();
     }
 }

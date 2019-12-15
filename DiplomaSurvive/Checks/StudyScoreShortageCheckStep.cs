@@ -25,5 +25,14 @@ namespace DiplomaSurvive
             probability = DeductionProbability;
             return true;
         }
+        public override ICheckStep Clone()
+        {
+            return new StudyScoreShortageCheckStep(_context)
+            {
+                NextStep = _nextStep.Clone(),
+                DeductionProbability = DeductionProbability,
+                MinScore = MinScore
+            };
+        }
     }
 }

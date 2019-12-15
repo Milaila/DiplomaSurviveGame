@@ -9,10 +9,17 @@ namespace DiplomaSurvive
     public class Button<T> : Button
     {
         public override event ValueChanged OnClickEvent;
-        public virtual T OnClick (BaseContext context = null)
+        public virtual T OnClickFunc(BaseContext context = null)
         {
             OnClickEvent?.Invoke();
             return default(T);
+        }
+        public override Button Clone()
+        {
+            return new Button<T>
+            {
+                Title = Title,
+            };
         }
     }
 
@@ -20,5 +27,17 @@ namespace DiplomaSurvive
     {
         public string Title { get; set; }
         public virtual event ValueChanged OnClickEvent;
+
+        public virtual void OnClick(BaseContext context = null)
+        {
+            OnClickEvent?.Invoke();
+        }
+        public virtual Button Clone()
+        {
+            return new Button
+            {
+                Title = Title,
+            };
+        }
     }
 }
