@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ActionPage<TButton> where TButton : Button
+    public interface IExamService
     {
-        public virtual List<TButton> Buttons { get; } = new List<TButton>();
+        IExam GetSession(int? level = null);
+        IExam GetEIT(int? level = null);
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ActionPage<TButton> where TButton : Button
+    public enum ExamType
     {
-        public virtual List<TButton> Buttons { get; } = new List<TButton>();
+        EIT,
+        Session
     }
 }

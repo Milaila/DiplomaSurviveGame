@@ -8,7 +8,7 @@ namespace DiplomaSurvive
 {
     public class ExamPage : ActionPage<ExamButton>
     {
-        public ExamPageType Type { get; set; }
+        public virtual ExamPageType Type { get; set; }
 
         public void Act (double probability)
         {

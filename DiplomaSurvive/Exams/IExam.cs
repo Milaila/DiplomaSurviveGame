@@ -8,7 +8,8 @@ namespace DiplomaSurvive
 {
     public interface IExam
     {
-        void Start();
-        ExamPage Next();
+        int Level { get; set; }
+        ExamType Type { get; set; }
+        ExamPage Start();
     }
 }

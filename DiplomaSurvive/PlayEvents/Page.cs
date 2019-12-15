@@ -10,5 +10,11 @@ namespace DiplomaSurvive
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public event ValueChanged OnCloseEvent;
+
+        public virtual void OnClose()
+        {
+            OnCloseEvent?.Invoke();
+        }
     }
 }

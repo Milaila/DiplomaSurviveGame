@@ -46,11 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exams\ExamFailPage.cs" />
+    <Compile Include="Exams\ExamSuccessPage.cs" />
     <Compile Include="Exams\IExam.cs" />
+    <Compile Include="Exams\ExamService.cs" />
+    <Compile Include="Exams\IExamService.cs" />
     <Compile Include="Exams\MoveDirection.cs" />
     <Compile Include="Exams\ExamPageType.cs" />
     <Compile Include="Exams\ExamTree.cs" />
-    <Compile Include="Exams\ExamNode.cs" />
+    <Compile Include="Exams\ExamType.cs" />
     <Compile Include="Exams\ExamPage.cs" />
     <Compile Include="Exams\ExamButton.cs" />
     <Compile Include="PlayEvents\Page.cs" />

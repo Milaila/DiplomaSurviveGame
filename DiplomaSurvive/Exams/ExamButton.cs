@@ -6,21 +6,34 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamButton: Button<Tuple<double, ExamPage>>
+    public class ExamButton: Button<ExamPage>
     {
-        protected double _currProbability;
-        public double DeductionCoefficient { get; set; }
+        public double CurrProbability { get; protected set; } = 1;
+        public double DeductionCoefficient { get; set; } = 1;
         public ExamPage NextPage { get; set; }
+        public ExamFailPage FailPage { get; set; } = new ExamFailPage();
+        public ExamSuccessPage SuccessPage { get; set; } = new ExamSuccessPage();
+        public INumberGenerator NumberGenerator { get; set; } = new DefaultNumberGenerator();
+
         public void SetDeductionProbability(double probability)
         {
-            _currProbability = probability * DeductionCoefficient;
+            CurrProbability = probability * DeductionCoefficient;
         }
-
-        public override Tuple<double, ExamPage> OnClick (BaseContext context = null)
+        public override ExamPage OnClick (BaseContext context = null)
         {
             base.OnClick(context);
-            NextPage.Act(_currProbability);
-            return new Tuple<double, ExamPage>(_currProbability, NextPage);
+            if (NextPage != null)
+            {
+                NextPage.Act(CurrProbability);
+                return NextPage;
+            }
+
+            if (NumberGenerator.NextDouble01() < CurrProbability)
+            {
+                return SuccessPage;
+            }
+
+            return FailPage;
         }
     }
 }
