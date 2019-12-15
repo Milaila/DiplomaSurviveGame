@@ -8,8 +8,8 @@ namespace DiplomaSurvive
 {
     public class MainContext : Context
     {
-        protected double _levelChanged;
-        public virtual double LastTask
+        protected int _levelChanged;
+        public virtual int Level
         {
             get { return _levelChanged; }
             set
