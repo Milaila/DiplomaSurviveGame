@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class Play
-    {
-
-    }
+    public interface IPlayEventStore : IStore<PlayEvent, BaseContext>
+    { }
 }

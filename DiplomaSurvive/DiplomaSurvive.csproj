@@ -47,12 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\EventsContext.cs" />
-    <Compile Include="StateService.cs" />
-    <Compile Include="StateKey.cs" />
+    <Compile Include="Interfaces\IPlayEventStore.cs" />
+    <Compile Include="States\StateService.cs" />
+    <Compile Include="States\StateKey.cs" />
     <Compile Include="Interfaces\IStateService.cs" />
     <Compile Include="Enums\EventType.cs" />
     <Compile Include="Enums\PlayState.cs" />
-    <Compile Include="DefaultStateMachine.cs" />
+    <Compile Include="States\DefaultStateMachine.cs" />
     <Compile Include="Exams\ExamFailPage.cs" />
     <Compile Include="Exams\ExamSuccessPage.cs" />
     <Compile Include="Interfaces\ICloneable generic.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="ValueChanged delegate.cs" />
     <Compile Include="Enums\DeductionType.cs" />
     <Compile Include="Interfaces\IStore.cs" />
-    <Compile Include="Play.cs" />
+    <Compile Include="Implementations\Play.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

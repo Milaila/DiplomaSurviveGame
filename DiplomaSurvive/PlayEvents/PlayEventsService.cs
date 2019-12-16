@@ -10,10 +10,10 @@ namespace DiplomaSurvive
     {
         private readonly BaseContext _context;
         private readonly INumberDistribution _generator;
-        private readonly IStore<PlayEvent> _eventsService;
+        private readonly IPlayEventStore _eventsService;
         public double NextTime { get; private set; } = 0;
 
-        public PlayEventsService(BaseContext context, INumberDistribution generator, IStore<PlayEvent> eventService)
+        public PlayEventsService(BaseContext context, INumberDistribution generator, IPlayEventStore eventService)
         {
             _context = context ?? throw new ArgumentNullException();
             _generator = generator ?? throw new ArgumentNullException();
@@ -27,7 +27,7 @@ namespace DiplomaSurvive
 
         public PlayEvent GetEvent()
         {
-            return _eventsService.Get();
+            return _eventsService.Get(_context);
         }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class PlayEventStore : BaseStore<PlayEvent>
+    public class PlayEventStore : BaseStore<PlayEvent, BaseContext>, IPlayEventStore
     {
         public PlayEventStore(ICollection<PlayEvent> events = null, INumberGenerator numberGenerator = null)
             : base(events, numberGenerator)
         { }
 
-        public override PlayEvent Get(BaseContext context = null)
+        public override PlayEvent Get(BaseContext context)
         {
             var availableEl = GetAll().Where(el => el.IsAvailable(context)).ToList();
             if (availableEl.Count == 0)

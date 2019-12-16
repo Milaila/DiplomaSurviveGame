@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    public interface IStore<T, TGetParam> : IStore<T>
+    {
+        T Get(TGetParam param);
+    }
+
     public interface IStore<T>
     {
-        T Get(BaseContext context = null);
-        void Set(T element);
+        T Get();
+        void Add(T element);
         T GetByIndex(int index);
         ICollection<T> GetAll();
         bool Remove(T element);
