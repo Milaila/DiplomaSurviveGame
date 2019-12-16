@@ -8,8 +8,25 @@ namespace DiplomaSurvive
 {
     public class SimilarPageExam: ExamPage
     {
-        public SimilarPageExam(INumberGenerator generator, ExamPage nextPage, string leftTitle = "", 
-            string rightTitle = "", double leftCoef = 0, double rightCoef = 0)
+        protected ExamPage _nextPage;
+        public ExamPage NextPage
+        {
+            get { return _nextPage; }
+            set
+            {
+                _nextPage = value;
+                if (LeftButton != null)
+                {
+                    LeftButton.NextPage = value;
+                }
+                if (RightButton != null)
+                {
+                    RightButton.NextPage = value;
+                }
+            }
+        }
+        public SimilarPageExam(INumberGenerator generator, string leftTitle = "", string rightTitle = "", 
+            double leftCoef = 0, double rightCoef = 0, ExamPage nextPage = null)
         {
             Buttons.Add(new ExamButton(generator)
             {
@@ -24,12 +41,21 @@ namespace DiplomaSurvive
                 DeductionCoefficient = rightCoef
             });
         }
-        public SimilarPageExam(ExamPage nextPage, ExamButton leftButton, ExamButton rightButton)
+        public SimilarPageExam(ExamButton leftButton, ExamButton rightButton, ExamPage nextPage = null)
         {
             LeftButton = leftButton;
             RightButton = rightButton;
             leftButton.NextPage = nextPage;
             rightButton.NextPage = nextPage;
+        }
+        public SimilarPageExam(List<SimilarPageExam> pages)
+        {
+            SimilarPageExam lastPage = this;
+            foreach (SimilarPageExam page in pages)
+            {
+                lastPage.NextPage = page;
+                lastPage = page;
+            }
         }
     }
 }

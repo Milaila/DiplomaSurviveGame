@@ -104,7 +104,7 @@ namespace DiplomaSurvive
                 Num = 4,
                 Type = "s4"
             };
-            C c1 = (B)b1.Clone2();
+            //C c1 = (B)b1.Clone2();
             Console.WriteLine("A a1 = new A");
             Console.WriteLine(((A)a1.Clone1()).Num);
             Console.WriteLine(((A)a1.Clone2()).Num);
