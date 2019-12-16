@@ -8,6 +8,7 @@ namespace DiplomaSurvive
 {
     public class ExamButton: Button<ExamPage>, ICloneable<ExamButton>
     {
+        protected INumberGenerator _numberGenerator;
         protected ExamPage _nextPage;
         protected ExamSuccessPage _successPage;
         protected ExamFailPage _failPage;
@@ -28,7 +29,6 @@ namespace DiplomaSurvive
             get { return _successPage; }
             set { _successPage = (value as ICloneable<ExamSuccessPage>).Clone(); }
         }
-        public INumberGenerator NumberGenerator { get; set; } = new DefaultNumberGenerator();
         protected ExamPage NextPageClone
         {
             get
@@ -54,10 +54,16 @@ namespace DiplomaSurvive
             }
         }
 
-        public ExamButton()
+        public ExamButton(INumberGenerator generator)
         {
             _failPage = new ExamFailPage();
             _successPage = new ExamSuccessPage();
+            _numberGenerator = generator ?? new DefaultNumberGenerator();
+        }
+        public ExamButton(Button button, INumberGenerator generator)
+            : this(generator)
+        {
+            Title = button.Title;
         }
 
         public void SetDeductionProbability(double probability)
@@ -73,7 +79,7 @@ namespace DiplomaSurvive
                 return NextPage;
             }
 
-            if (NumberGenerator.NextDouble01() < CurrProbability)
+            if (_numberGenerator.NextDouble01() < CurrProbability)
             {
                 return SuccessPage;
             }
@@ -82,13 +88,12 @@ namespace DiplomaSurvive
         }
         ExamButton ICloneable<ExamButton>.Clone()
         {
-            return new ExamButton
+            return new ExamButton(_numberGenerator)
             {
                 Title = Title,
                 CurrProbability = CurrProbability,
                 DeductionCoefficient = DeductionCoefficient,
                 NextPage = NextPageClone,
-                NumberGenerator = NumberGenerator,
                 SuccessPage = SuccessPageClone,
                 FailPage = FailPageClone,
             };

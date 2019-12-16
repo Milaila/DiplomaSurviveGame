@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\EventsContext.cs" />
+    <Compile Include="Exams\SimilarPageExam.cs" />
     <Compile Include="Interfaces\IPlayEventStore.cs" />
     <Compile Include="States\StateService.cs" />
     <Compile Include="States\StateKey.cs" />

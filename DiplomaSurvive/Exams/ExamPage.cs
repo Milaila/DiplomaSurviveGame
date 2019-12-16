@@ -47,7 +47,7 @@ namespace DiplomaSurvive
                 {
                     if (Buttons.Count == 0)
                     {
-                        Buttons.Add(new ExamButton());
+                        Buttons.Add(cloneable.Clone());
                     }
                     Buttons.Add(button);
                 }
