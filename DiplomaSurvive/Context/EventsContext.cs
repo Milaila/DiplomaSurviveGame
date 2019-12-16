@@ -16,10 +16,6 @@ namespace DiplomaSurvive
         public event Action<IExam> OnStartExam;
         public event Action OnFailExam;
         public event Action OnPassExam;
-        //public event Action ;
-        //public event Action OnStartExam;
-        //public event Action<PlayEvent> OnCloseEventPage;
-        //public event Action<PlayEvent> OnCloseEventPage;
 
         public EventsContext(IDeductionStore deductionStore)
         {
