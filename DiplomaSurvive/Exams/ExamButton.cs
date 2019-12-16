@@ -8,32 +8,56 @@ namespace DiplomaSurvive
 {
     public class ExamButton: Button<ExamPage>, ICloneable<ExamButton>
     {
+        protected ExamPage _nextPage;
+        protected ExamSuccessPage _successPage;
+        protected ExamFailPage _failPage;
         public double CurrProbability { get; protected set; } = 1;
         public double DeductionCoefficient { get; set; } = 1;
-        public ExamPage NextPage { get; set; }
-        public ExamFailPage FailPage { get; set; } = new ExamFailPage();
-        public ExamSuccessPage SuccessPage { get; set; } = new ExamSuccessPage();
+        public ExamPage NextPage
+        {
+            get { return _nextPage; }
+            set { _nextPage = (value as ICloneable<ExamPage>).Clone(); }
+        }
+        public ExamFailPage FailPage
+        {
+            get { return _failPage; }
+            set { _failPage = (value as ICloneable<ExamFailPage>).Clone(); }
+        }
+        public ExamSuccessPage SuccessPage
+        {
+            get { return _successPage; }
+            set { _successPage = (value as ICloneable<ExamSuccessPage>).Clone(); }
+        }
         public INumberGenerator NumberGenerator { get; set; } = new DefaultNumberGenerator();
-        protected ICloneable<ExamPage> CloneableNextPage
+        protected ExamPage NextPageClone
         {
             get
             {
-                return NextPage;
+                ICloneable<ExamPage> cloneable = NextPage;
+                return cloneable.Clone();
             }
         }
-        protected ICloneable<ExamFailPage> CloneableFailPage
+        protected ExamFailPage FailPageClone
         {
             get
             {
-                return FailPage;
+                ICloneable<ExamFailPage> cloneable = FailPage;
+                return cloneable.Clone();
             }
         }
-        protected ICloneable<ExamSuccessPage> CloneableSuccessPage
+        protected ExamSuccessPage SuccessPageClone
         {
             get
             {
-                return SuccessPage;
+                ICloneable<ExamSuccessPage> cloneable = SuccessPage;
+                return cloneable.Clone();
             }
+        }
+
+        public ExamButton()
+        {
+            _failPage = new ExamFailPage();
+            _successPage = new ExamSuccessPage();
         }
 
         public void SetDeductionProbability(double probability)
@@ -56,7 +80,6 @@ namespace DiplomaSurvive
 
             return FailPage;
         }
-
         ExamButton ICloneable<ExamButton>.Clone()
         {
             return new ExamButton
@@ -64,10 +87,10 @@ namespace DiplomaSurvive
                 Title = Title,
                 CurrProbability = CurrProbability,
                 DeductionCoefficient = DeductionCoefficient,
-                NextPage = CloneableNextPage.Clone(),
+                NextPage = NextPageClone,
                 NumberGenerator = NumberGenerator,
-                SuccessPage = CloneableSuccessPage.Clone(),
-                FailPage = CloneableFailPage.Clone(),
+                SuccessPage = SuccessPageClone,
+                FailPage = FailPageClone,
             };
         }
     }

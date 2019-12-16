@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class ExamTree : IExam, ICloneable<ExamTree>, ICloneable<IExam>
+    public class ExamTree : IExam, ICloneable<ExamTree>
     {
-        public ExamPage RootPage { get; set; }
+        protected ExamPage _rootPage;
+
+        public ExamPage RootPage
+        {
+            get { return _rootPage; }
+            set
+            {
+                ICloneable<ExamPage> cloneable = value;
+                _rootPage = cloneable.Clone();
+            }
+        }
         public int Level { get; set; }
         public ExamType Type { get; set; }
-        protected ICloneable<ExamPage> CloneableRootPage
+        protected ExamPage RootPageClone
         {
             get
             {
-                return RootPage;
+                ICloneable<ExamPage> cloneable = _rootPage;
+                return cloneable.Clone();
             }
         }
 
@@ -31,7 +42,7 @@ namespace DiplomaSurvive
         {
             return new ExamTree
             {
-                RootPage = CloneableRootPage.Clone(),
+                RootPage = RootPageClone,
                 Level = Level,
                 Type = Type
             };
