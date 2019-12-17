@@ -8,6 +8,7 @@ namespace DiplomaSurvive
 {
     public class ExamTree : IExam, ICloneable<ExamTree>
     {
+        protected double _deductionProbability;
         protected ExamPage _rootPage;
 
         public ExamPage RootPage
@@ -21,6 +22,14 @@ namespace DiplomaSurvive
         }
         public int Level { get; set; }
         public ExamType Type { get; set; }
+        public double DeductionProbability
+        {
+            set
+            {
+                _deductionProbability = value;
+            }
+        }
+
         protected ExamPage RootPageClone
         {
             get
@@ -32,6 +41,7 @@ namespace DiplomaSurvive
 
         public virtual ExamPage Start()
         {
+            RootPage.SetProbability(_deductionProbability);
             return RootPage;
         }
         IExam ICloneable<IExam>.Clone()
@@ -44,7 +54,8 @@ namespace DiplomaSurvive
             {
                 RootPage = RootPageClone,
                 Level = Level,
-                Type = Type
+                Type = Type,
+                DeductionProbability = _deductionProbability
             };
         }
     }
