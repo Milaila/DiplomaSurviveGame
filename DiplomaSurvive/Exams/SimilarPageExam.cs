@@ -25,9 +25,17 @@ namespace DiplomaSurvive
                 }
             }
         }
-        public SimilarPageExam(INumberGenerator generator, string leftTitle = "", string rightTitle = "", 
-            double leftCoef = 0, double rightCoef = 0, ExamPage nextPage = null)
+        public double Posibility
         {
+            set
+            {
+                SetPosibility(value);
+            }
+        }
+        public SimilarPageExam(string title = "", string leftTitle = "", string rightTitle = "", double leftCoef = 0, 
+            double rightCoef = 0, ExamPage nextPage = null, INumberGenerator generator = null)
+        {
+            Title = title;
             Buttons.Add(new ExamButton(generator)
             {
                 Title = leftTitle,
