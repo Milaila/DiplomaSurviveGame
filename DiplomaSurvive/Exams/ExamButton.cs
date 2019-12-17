@@ -10,8 +10,6 @@ namespace DiplomaSurvive
     {
         protected INumberGenerator _numberGenerator;
         protected ExamPage _nextPage;
-        protected ExamSuccessPage _successPage;
-        protected ExamFailPage _failPage;
         public double CurrProbability { get; protected set; } = 1;
         public double DeductionCoefficient { get; set; } = 1;
         public ExamPage NextPage
@@ -19,16 +17,8 @@ namespace DiplomaSurvive
             get { return _nextPage; }
             set { _nextPage = (value as ICloneable<ExamPage>).Clone(); }
         }
-        public ExamFailPage FailPage
-        {
-            get { return _failPage; }
-            set { _failPage = (value as ICloneable<ExamFailPage>).Clone(); }
-        }
-        public ExamSuccessPage SuccessPage
-        {
-            get { return _successPage; }
-            set { _successPage = (value as ICloneable<ExamSuccessPage>).Clone(); }
-        }
+        public ExamFailPage FailPage { get; set; }
+        public ExamSuccessPage SuccessPage { get; set; }
         protected ExamPage NextPageClone
         {
             get
@@ -54,16 +44,15 @@ namespace DiplomaSurvive
             }
         }
 
-        public ExamButton(INumberGenerator generator)
+        public ExamButton(INumberGenerator generator = null)
         {
-            _failPage = new ExamFailPage();
-            _successPage = new ExamSuccessPage();
             _numberGenerator = generator ?? new DefaultNumberGenerator();
         }
-        public ExamButton(Button button, INumberGenerator generator)
+        public ExamButton(string title, double deductionCoef, INumberGenerator generator = null)
             : this(generator)
         {
-            Title = button.Title;
+            Title = title;
+            DeductionCoefficient = deductionCoef;
         }
 
         public void SetDeductionProbability(double probability)
@@ -75,15 +64,17 @@ namespace DiplomaSurvive
             base.OnClickFunc(context);
             if (NextPage != null)
             {
-                NextPage.Act(CurrProbability);
+                NextPage.SetPosibility(CurrProbability);
                 return NextPage;
             }
 
             if (_numberGenerator.NextDouble01() < CurrProbability)
             {
+                SuccessPage = SuccessPage ?? new ExamSuccessPage();
                 return SuccessPage;
             }
 
+            FailPage = FailPage ?? new ExamFailPage();
             return FailPage;
         }
         ExamButton ICloneable<ExamButton>.Clone()

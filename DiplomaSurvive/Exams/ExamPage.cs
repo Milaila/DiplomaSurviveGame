@@ -8,7 +8,7 @@ namespace DiplomaSurvive
 {
     public class ExamPage : ActionPage<ExamButton>, ICloneable<ExamPage>
     {
-        public virtual ExamPageType Type { get; set; }
+        public virtual ExamPageType Type { get; set; } = ExamPageType.InProgress;
         public virtual ExamButton LeftButton
         {
             get
@@ -54,11 +54,11 @@ namespace DiplomaSurvive
             }
         }
 
-        public void Act(double probability)
+        public void SetPosibility(double probability)
         {
             foreach(var button in Buttons)
             {
-                button.SetDeductionProbability(probability);
+                button?.SetDeductionProbability(probability);
             }
         }
         ExamPage ICloneable<ExamPage>.Clone()
