@@ -54,7 +54,7 @@ namespace DiplomaSurvive
             }
         }
 
-        public void SetPosibility(double probability)
+        public void SetProbability(double probability)
         {
             foreach(var button in Buttons)
             {

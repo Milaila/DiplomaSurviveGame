@@ -64,7 +64,7 @@ namespace DiplomaSurvive
             base.OnClickFunc(context);
             if (NextPage != null)
             {
-                NextPage.SetPosibility(CurrProbability);
+                NextPage.SetProbability(CurrProbability);
                 return NextPage;
             }
 

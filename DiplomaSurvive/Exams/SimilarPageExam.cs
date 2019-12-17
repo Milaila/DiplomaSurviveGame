@@ -25,11 +25,11 @@ namespace DiplomaSurvive
                 }
             }
         }
-        public double Posibility
+        public double Probability
         {
             set
             {
-                SetPosibility(value);
+                SetProbability(value);
             }
         }
         public SimilarPageExam(string title = "", string leftTitle = "", string rightTitle = "", double leftCoef = 0, 
