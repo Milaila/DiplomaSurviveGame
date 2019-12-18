@@ -9,6 +9,7 @@ namespace DiplomaSurvive
     public enum ExamType
     {
         EIT,
-        Session
+        Session,
+        Universal
     }
 }
