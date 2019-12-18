@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public interface ICloneable<T>
+    public interface ICloneable<T> : IShallowCopy
     {
         T Clone();
     }

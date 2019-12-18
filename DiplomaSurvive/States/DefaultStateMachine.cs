@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class DefaultStateMachine : Dictionary<StateKey, PlayState>
     {
         private static readonly Dictionary<StateKey, PlayState> _dictionary;

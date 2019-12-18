@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    [Serializable]
-    public abstract class DTO
+    public interface IShallowCopy
     {
-        public int Id { get; set; }
-
-        public DTO()
-        {
-            Id = GetHashCode();
-        }
+        object ShallowCopy();
     }
 }

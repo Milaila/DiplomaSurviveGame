@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class ExamButton: Button<ExamPage>, ICloneable<ExamButton>
     {
         protected INumberGenerator _numberGenerator;
-        protected ExamPage _nextPage;
         public double CurrProbability { get; protected set; } = 1;
         public double DeductionCoefficient { get; set; } = 1;
-        public ExamPage NextPage
-        {
-            get { return _nextPage; }
-            set { _nextPage = (value as ICloneable<ExamPage>).Clone(); }
-        }
+        public ExamPage NextPage { get; set; }
         public ExamFailPage FailPage { get; set; }
         public ExamSuccessPage SuccessPage { get; set; }
         protected ExamPage NextPageClone
@@ -87,6 +83,8 @@ namespace DiplomaSurvive
                 NextPage = NextPageClone,
                 SuccessPage = SuccessPageClone,
                 FailPage = FailPageClone,
+                ClickFunc = ClickFunc,
+                ClickFuncReturn = ClickFuncReturn
             };
         }
     }

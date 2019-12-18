@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public abstract class BaseCheckStep : ICheckStep, ICloneable<BaseCheckStep>
+    public class BaseCheckStep : ICheckStep, ICloneable<BaseCheckStep>
     {
         protected ICheckStep _nextStep;
+        [field:NonSerialized]
         protected BaseContext _context;
         public bool NeedCheck { get; protected set; }
+        [field:NonSerialized]
         public event ValueChanged OnNeedCheck;
+        public Func<double> CheckFunc;
+        public TryHandleDelegate TryHandleFunc;
         public ICheckStep NextStep
         {
             set
@@ -36,6 +40,11 @@ namespace DiplomaSurvive
         }
         public virtual double Check()
         {
+            if (CheckFunc != null)
+            {
+                return CheckFunc();
+            }
+
             double probability = 0;
             NeedCheck = false;
 
@@ -50,11 +59,28 @@ namespace DiplomaSurvive
             NeedCheck = true;
             OnNeedCheck?.Invoke();
         }
-        protected abstract bool TryHandle(ref double probability);
+        protected virtual bool TryHandle(ref double probability)
+        {
+            return TryHandleFunc?.Invoke(ref probability) ?? false;
+        }
         ICheckStep ICloneable<ICheckStep>.Clone()
         {
             return (this as ICloneable<BaseCheckStep>).Clone();
         }
-        public abstract BaseCheckStep Clone();
+        public virtual BaseCheckStep Clone()
+        {
+            return new BaseCheckStep(_context)
+            {
+                NextStep = _nextStep.Clone(),
+                CheckFunc = CheckFunc,
+                TryHandleFunc = TryHandleFunc
+            };
+        }
+        public virtual object ShallowCopy()
+        {
+            return MemberwiseClone();
+        }
     }
+
+    public delegate bool TryHandleDelegate(ref double probability);
 }

@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Context\EventsContext.cs" />
     <Compile Include="Exams\SimilarPageExam.cs" />
+    <Compile Include="Interfaces\ICheck.cs" />
+    <Compile Include="Interfaces\IShallowCopy.cs" />
     <Compile Include="Interfaces\IPlayEventStore.cs" />
     <Compile Include="States\StateService.cs" />
     <Compile Include="States\StateKey.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Interfaces\IPlayEventsService.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Checks\BaseCheck.cs" />
+    <Compile Include="Main\DeepCloneExtension.cs" />
     <Compile Include="ValueChanged delegate.cs" />
     <Compile Include="Enums\DeductionType.cs" />
     <Compile Include="Interfaces\IStore.cs" />

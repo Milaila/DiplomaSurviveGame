@@ -6,22 +6,27 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class PlayEvent : ActionPage<Button<Page>>, ICloneable<PlayEvent>
     {
+        public Func<BaseContext, bool> IsAvailableFunc;
         public virtual bool IsAvailable(BaseContext context = null)
         {
-            return true;
+            return IsAvailableFunc?.Invoke(context) ?? true;
         }
         PlayEvent ICloneable<PlayEvent>.Clone()
         {
+            ICloneable<Button<Page>> cloneable;
             var page = new PlayEvent
             {
                 Title = Title,
                 Description = Description,
+                IsAvailableFunc = IsAvailableFunc
             };
             foreach (var button in Buttons)
             {
-                page.AddButton(button);
+                cloneable = button;
+                page.AddButton(cloneable.Clone());
             }
             return page;
         }

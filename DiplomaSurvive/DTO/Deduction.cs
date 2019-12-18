@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class Deduction : DTO
     {
         public string Title { get; set; }

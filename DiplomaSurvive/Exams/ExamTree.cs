@@ -6,19 +6,10 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class ExamTree : IExam, ICloneable<ExamTree>
     {
-        protected ExamPage _rootPage;
-
-        public ExamPage RootPage
-        {
-            get { return _rootPage; }
-            set
-            {
-                ICloneable<ExamPage> cloneable = value;
-                _rootPage = cloneable.Clone();
-            }
-        }
+        public ExamPage RootPage { get; set; }
         public int Level { get; set; }
         public ExamType Type { get; set; }
         public double DeductionProbability { set; protected get; } = 0.5;
@@ -27,11 +18,15 @@ namespace DiplomaSurvive
         {
             get
             {
-                ICloneable<ExamPage> cloneable = _rootPage;
+                ICloneable<ExamPage> cloneable = RootPage;
                 return cloneable.Clone();
             }
         }
 
+        public virtual object ShallowCopy()
+        {
+            return MemberwiseClone();
+        }
         public virtual ExamPage Start()
         {
             RootPage.SetProbability(DeductionProbability);

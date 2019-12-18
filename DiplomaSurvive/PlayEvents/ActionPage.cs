@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class ActionPage<TButton> : Page, ICloneable<ActionPage<TButton>>
         where TButton : Button, ICloneable<TButton>
     {
         public virtual List<TButton> Buttons { get; protected set; } = new List<TButton>();
         public virtual void AddButton(TButton button)
         {
-            Buttons.Add(button.Clone());
+            Buttons.Add(button);
         }
 
         ActionPage<TButton> ICloneable<ActionPage<TButton>>.Clone()
@@ -20,11 +21,12 @@ namespace DiplomaSurvive
             var page = new ActionPage<TButton>
             {
                 Title = Title,
-                Description = Description
+                Description = Description,
+                OnCloseFunc = OnCloseFunc
             };
             foreach (var button in Buttons)
             {
-                page.AddButton(button);
+                page.AddButton(button.Clone());
             }
             return page;
         }

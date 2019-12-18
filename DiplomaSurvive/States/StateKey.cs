@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class StateKey
     {
         public PlayState State { get; set; }

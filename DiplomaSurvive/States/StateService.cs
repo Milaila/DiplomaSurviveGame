@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-
     public class StateService : IStateService
     {
         protected IDictionary<StateKey, PlayState> _stateMachine;

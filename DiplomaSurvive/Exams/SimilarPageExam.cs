@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class SimilarPageExam: ExamPage
     {
         protected ExamPage _nextPage;

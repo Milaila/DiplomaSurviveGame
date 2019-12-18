@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
+    [Serializable]
     public class ExamPage : ActionPage<ExamButton>, ICloneable<ExamPage>
     {
         public virtual ExamPageType Type { get; set; } = ExamPageType.InProgress;
@@ -63,6 +64,7 @@ namespace DiplomaSurvive
         }
         ExamPage ICloneable<ExamPage>.Clone()
         {
+            ICloneable<ExamButton> cloneable;
             var page = new ExamPage
             {
                 Title = Title,
@@ -71,7 +73,8 @@ namespace DiplomaSurvive
             };
             foreach (var button in Buttons)
             {
-                page.AddButton(button);
+                cloneable = button;
+                page.AddButton(cloneable.Clone());
             }
             return page;
         }

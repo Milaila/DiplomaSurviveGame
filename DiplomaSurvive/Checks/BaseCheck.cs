@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DiplomaSurvive
 {
-    public class BaseCheck : ICloneable<BaseCheck>
+    public class BaseCheck : ICheck, ICloneable<BaseCheck>
     {
         private ICheckStep _checkChain;
         public int Priority { get; set; } = int.MaxValue;
         public bool IsDirty { get; private set; } = true;
+        [field:NonSerialized]
         public event ValueChanged OnDirty;
         public DeductionType DeductionType { get; set; } = DeductionType.Undefined;
         public ICheckStep CheckChain 
@@ -29,6 +30,7 @@ namespace DiplomaSurvive
                 _checkChain.OnNeedCheck += NeedCheck;
             }
         }
+
         public virtual double Check()
         {
             IsDirty = false;
@@ -39,7 +41,6 @@ namespace DiplomaSurvive
             IsDirty = true;
             OnDirty?.Invoke();
         }
-
         BaseCheck ICloneable<BaseCheck>.Clone()
         {
             return new BaseCheck
@@ -48,6 +49,10 @@ namespace DiplomaSurvive
                 Priority = Priority,
                 DeductionType = DeductionType
             };
+        }
+        public virtual object ShallowCopy()
+        {
+            return MemberwiseClone();
         }
     }
 }
