@@ -10,6 +10,34 @@ namespace DiplomaSurvive
     public class ExamPage : ActionPage<ExamButton>, ICloneable<ExamPage>
     {
         public virtual ExamPageType Type { get; set; } = ExamPageType.InProgress;
+        public virtual ExamPage LeftPage
+        {
+            get
+            {
+                return LeftButton?.NextPage;
+            }
+            set
+            {
+                if (LeftButton != null)
+                {
+                    LeftButton.NextPage = value;
+                }
+            }
+        }
+        public virtual ExamPage RightPage
+        {
+            get
+            {
+                return RightButton?.NextPage;
+            }
+            set
+            {
+                if (RightButton != null)
+                {
+                    RightButton.NextPage = value;
+                }
+            }
+        }
         public virtual ExamButton LeftButton
         {
             get
@@ -58,7 +86,7 @@ namespace DiplomaSurvive
         public ExamPage()
         { }
         public ExamPage(string title = "", string leftTitle = "", string rightTitle = "", 
-            double leftCoef = 0, double rightCoef = 0, INumberGenerator generator = null)
+            double leftCoef = 1, double rightCoef = 1, INumberGenerator generator = null)
         {
             Title = title;
             Buttons.Add(new ExamButton(generator: generator)
