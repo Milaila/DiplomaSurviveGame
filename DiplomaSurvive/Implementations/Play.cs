@@ -14,6 +14,7 @@ namespace DiplomaSurvive
         public Play(INumberGenerator numberGenerator)
         {
             _numberGenerator = numberGenerator;
+            InitExamStore();
         }
         public void InitExamStore()
         {
@@ -33,7 +34,7 @@ namespace DiplomaSurvive
                 new ExamTree()
                 {
                     RootPage = new SimilarPageExam(Questions.CHOOSE_SUBJECT, Answers.Subjects.LITERATURE,
-                        Answers.Subjects.SPANISH, 0.8, 1, FullExamPages.DoNotKnowAnswersContinueBomb()),
+                        Answers.Subjects.SPANISH, 0.75, 0.9, FullExamPages.DoNotKnowAnswersContinueBomb()),
                     Type = ExamType.EIT,
                     DeductionProbability = 0.5
                 },
@@ -133,7 +134,6 @@ namespace DiplomaSurvive
         //public const string  = "";
         //public const string  = "";
     }
-
     public static partial class ExamPages
     {
         public static ExamPage MINUS_1_MINUS_1(double coefL = 1.5, double coefR = 0.2)
@@ -196,27 +196,27 @@ namespace DiplomaSurvive
         {
             return YesNoQuestion(Questions.CHECK_AGAIN, coefL, coefR);
         }
-        public static ExamPage REPORT_ABOUT_BOMB(double coefL = 0.1, double coefR = 0.98)
+        public static ExamPage REPORT_ABOUT_BOMB(double coefL = 0.2, double coefR = 0.98)
         {
             return YesNoQuestion(Questions.REPORT_ABOUT_BOMB, coefL, coefR);
         }
-        public static ExamPage DONT_KNOW_ANSWERS_GUESS(double coefL = 2.5, double coefR = 0.32)
+        public static ExamPage DONT_KNOW_ANSWERS_GUESS(double coefL = 2.3, double coefR = 0.32)
         {
             return new ExamPage(Questions.DONT_KNOW_ANSWERS, Answers.GIVE_UP, Answers.GUESS, coefL, coefR);
         }
-        public static ExamPage DONT_KNOW_ANSWERS_CONTINUE(double coefL = 2.25, double coefR = 0.5)
+        public static ExamPage DONT_KNOW_ANSWERS_CONTINUE(double coefL = 2.18, double coefR = 0.8)
         {
             return new ExamPage(Questions.DONT_KNOW_ANSWERS, Answers.GIVE_UP, Answers.CONTINUE, coefL, coefR);
         }
-        public static ExamPage DONT_KNOW_ANSWERS_CHEAT(double coefL = 2, double coefR = 1.15)
+        public static ExamPage DONT_KNOW_ANSWERS_CHEAT(double coefL = 1.9, double coefR = 1.15)
         {
             return new ExamPage(Questions.DONT_KNOW_ANSWERS, Answers.GIVE_UP, Answers.CHEAT, coefL, coefR);
         }
-        public static ExamPage POLICE_FOUND_NO_BOMB(double coefL = 3.5, double coefR = 1)
+        public static ExamPage POLICE_FOUND_NO_BOMB(double coefL = 20, double coefR = 1)
         {
-            return new ExamPage(Questions.DONT_KNOW_ANSWERS, Answers.GIVE_UP, Answers.LIE, coefL, coefR);
+            return new ExamPage(Questions.POLICE_FOUND_NO_BOMB, Answers.GIVE_UP, Answers.LIE, coefL, coefR);
         }
-        public static ExamPage BLAME_ANTON_DENIS(double coefL = 10, double coefR = 0.75)
+        public static ExamPage BLAME_ANTON_DENIS(double coefL = 20, double coefR = 0.75)
         {
             return new ExamPage(Questions.BLAME_WHO, Answers.Names.ANTON, Answers.Names.DENIS, coefL, coefR);
         }
@@ -276,9 +276,9 @@ namespace DiplomaSurvive
             leftPage = page.LeftPage = ExamPages.H2O_IS();
             rightPage = page.RightPage = ExamPages.MINUS_1_MINUS_1();
             leftPage.LeftPage = AskForHelpDenisAnton(0.45, 1.1);
-            leftPage.RightPage = AskForHelpDenisAnton(2, 0.9);
+            leftPage.RightPage = AskForHelpDenisAnton(1.5, 0.8);
             rightPage.RightPage = AskForHelpDenisAnton(0.5, 1.2);
-            rightPage.LeftPage = AskForHelpDenisAnton(2.5, 0.95);
+            rightPage.LeftPage = AskForHelpDenisAnton(1.85, 0.82);
             return page;
         }
         public static ExamPage AskForHelpDenisAnton(double coefHelp = 1.4, double coefNoHelp = 1)
