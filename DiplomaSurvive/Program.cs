@@ -203,12 +203,5 @@ namespace DiplomaSurvive
             OnM = null;
             IsFinish = false;
         }
-        //public void StartShow()
-        //{
-        //    while (!IsFinish)
-        //    {
-        //        Show();
-        //    }
-        //}
     }
 }
