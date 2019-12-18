@@ -31,7 +31,7 @@ namespace DiplomaSurvive
         public BaseStore(ICollection<T> elements = null, INumberGenerator numberGenerator = null)
         {
             _numberGen = numberGenerator ?? new DefaultNumberGenerator();
-            _elements = elements.ToList() ?? new List<T>();
+            _elements = elements?.ToList() ?? new List<T>();
         }
 
         public virtual void Add(T element)
