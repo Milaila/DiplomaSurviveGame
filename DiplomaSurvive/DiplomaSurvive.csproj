@@ -63,9 +63,9 @@
     <Compile Include="Interfaces\IExam.cs" />
     <Compile Include="Exams\ExamService.cs" />
     <Compile Include="Interfaces\IExamService.cs" />
-    <Compile Include="Exams\ExamPageType.cs" />
+    <Compile Include="Enums\ExamPageType.cs" />
     <Compile Include="Exams\ExamTree.cs" />
-    <Compile Include="Exams\ExamType.cs" />
+    <Compile Include="Enums\ExamType.cs" />
     <Compile Include="Exams\ExamPage.cs" />
     <Compile Include="Exams\ExamButton.cs" />
     <Compile Include="PlayEvents\Page.cs" />
