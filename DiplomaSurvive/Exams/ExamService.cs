@@ -38,7 +38,8 @@ namespace DiplomaSurvive
         {
             var exams = _examStore
                 .GetAll()
-                .Where(ex => ex.Type == type && (level == null || ex.Level <= 0 || ex.Level == level))
+                .Where(ex => (ex.Type == type || ex.Type == ExamType.Universal) 
+                        && (level == null || ex.Level <= 0 || ex.Level == level))
                 .ToList();
 
             if (exams.Count == 0)
