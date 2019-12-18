@@ -33,8 +33,17 @@ namespace DiplomaSurvive
                 SetProbability(value);
             }
         }
-        public SimilarPageExam(string title = "", string leftTitle = "", string rightTitle = "", double leftCoef = 0, 
-            double rightCoef = 0, ExamPage nextPage = null, INumberGenerator generator = null)
+
+        public SimilarPageExam(ExamPage currPage, ExamPage nextPage = null)
+        {
+            LeftButton = currPage.LeftButton;
+            RightButton = currPage.RightButton;
+            Type = currPage.Type;
+            NextPage = nextPage;
+            Title = currPage.Title;
+        }
+        public SimilarPageExam(string title = "", string leftTitle = "", string rightTitle = "", double leftCoef = 1, 
+            double rightCoef = 1, ExamPage nextPage = null, INumberGenerator generator = null)
         {
             Title = title;
             Buttons.Add(new ExamButton(generator: generator)
@@ -50,20 +59,33 @@ namespace DiplomaSurvive
                 DeductionCoefficient = rightCoef
             });
         }
-        public SimilarPageExam(ExamButton leftButton, ExamButton rightButton, ExamPage nextPage = null)
+        public SimilarPageExam(ExamButton leftButton, ExamButton rightButton, ExamPage nextPage = null, string title = "")
         {
             LeftButton = leftButton;
             RightButton = rightButton;
             leftButton.NextPage = nextPage;
             rightButton.NextPage = nextPage;
+            Title = title;
         }
         public SimilarPageExam(List<SimilarPageExam> pages)
         {
-            SimilarPageExam lastPage = this;
+            SimilarPageExam lastPage = null;
             foreach (SimilarPageExam page in pages)
             {
-                lastPage.NextPage = page;
-                lastPage = page;
+                if (lastPage == null)
+                {
+                    LeftButton = page.LeftButton;
+                    RightButton = page.RightButton;
+                    Type = page.Type;
+                    NextPage = page.NextPage;
+                    Title = page.Title;
+                    lastPage = this;
+                }
+                else
+                {
+                    lastPage.NextPage = page;
+                    lastPage = page;
+                }
             }
         }
     }
