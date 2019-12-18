@@ -46,15 +46,13 @@ namespace DiplomaSurvive
             }
             set
             {
-                ICloneable<ExamButton> cloneable = value;
-                var button = cloneable.Clone();
                 if (Buttons.Count > 0)
                 {
-                    Buttons[0] = button;
+                    Buttons[0] = value;
                 }
                 else
                 {
-                    Buttons.Add(button);
+                    Buttons.Add(value);
                 }
             }
         }
@@ -67,10 +65,9 @@ namespace DiplomaSurvive
             set
             {
                 ICloneable<ExamButton> cloneable = value;
-                var button = cloneable.Clone();
                 if (Buttons.Count > 1)
                 {
-                    Buttons[1] = button;
+                    Buttons[1] = value;
                 }
                 else
                 {
@@ -78,7 +75,7 @@ namespace DiplomaSurvive
                     {
                         Buttons.Add(cloneable.Clone());
                     }
-                    Buttons.Add(button);
+                    Buttons.Add(value);
                 }
             }
         }
