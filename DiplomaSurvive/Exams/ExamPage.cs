@@ -55,6 +55,23 @@ namespace DiplomaSurvive
             }
         }
 
+        public ExamPage()
+        { }
+        public ExamPage(string title = "", string leftTitle = "", string rightTitle = "", 
+            double leftCoef = 0, double rightCoef = 0, INumberGenerator generator = null)
+        {
+            Title = title;
+            Buttons.Add(new ExamButton(generator: generator)
+            {
+                Title = leftTitle,
+                DeductionCoefficient = leftCoef
+            });
+            Buttons.Add(new ExamButton(generator: generator)
+            {
+                Title = rightTitle,
+                DeductionCoefficient = rightCoef
+            });
+        }
         public void SetProbability(double probability)
         {
             foreach(var button in Buttons)

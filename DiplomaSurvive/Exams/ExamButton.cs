@@ -40,15 +40,11 @@ namespace DiplomaSurvive
             }
         }
 
-        public ExamButton(INumberGenerator generator = null)
-        {
-            _numberGenerator = generator ?? new DefaultNumberGenerator();
-        }
-        public ExamButton(string title, double deductionCoef, INumberGenerator generator = null)
-            : this(generator)
+        public ExamButton(string title = "", double deductionCoef = 1, INumberGenerator generator = null)
         {
             Title = title;
             DeductionCoefficient = deductionCoef;
+            _numberGenerator = generator ?? new DefaultNumberGenerator();
         }
 
         public void SetDeductionProbability(double probability)
@@ -75,7 +71,7 @@ namespace DiplomaSurvive
         }
         ExamButton ICloneable<ExamButton>.Clone()
         {
-            return new ExamButton(_numberGenerator)
+            return new ExamButton(generator: _numberGenerator)
             {
                 Title = Title,
                 CurrProbability = CurrProbability,

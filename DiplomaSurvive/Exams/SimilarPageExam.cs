@@ -37,13 +37,13 @@ namespace DiplomaSurvive
             double rightCoef = 0, ExamPage nextPage = null, INumberGenerator generator = null)
         {
             Title = title;
-            Buttons.Add(new ExamButton(generator)
+            Buttons.Add(new ExamButton(generator: generator)
             {
                 Title = leftTitle,
                 NextPage = nextPage,
                 DeductionCoefficient = leftCoef
             });
-            Buttons.Add(new ExamButton(generator)
+            Buttons.Add(new ExamButton(generator: generator)
             {
                 Title = rightTitle,
                 NextPage = nextPage,
