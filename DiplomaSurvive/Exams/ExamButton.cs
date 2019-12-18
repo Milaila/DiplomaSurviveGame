@@ -20,7 +20,7 @@ namespace DiplomaSurvive
             get
             {
                 ICloneable<ExamPage> cloneable = NextPage;
-                return cloneable.Clone();
+                return cloneable?.Clone() ?? null;
             }
         }
         protected ExamFailPage FailPageClone
@@ -28,7 +28,7 @@ namespace DiplomaSurvive
             get
             {
                 ICloneable<ExamFailPage> cloneable = FailPage;
-                return cloneable.Clone();
+                return cloneable?.Clone() ?? null;
             }
         }
         protected ExamSuccessPage SuccessPageClone
@@ -36,7 +36,7 @@ namespace DiplomaSurvive
             get
             {
                 ICloneable<ExamSuccessPage> cloneable = SuccessPage;
-                return cloneable.Clone();
+                return cloneable?.Clone() ?? null;
             }
         }
 
@@ -60,7 +60,7 @@ namespace DiplomaSurvive
                 return NextPage;
             }
 
-            if (_numberGenerator.NextDouble01() < CurrProbability)
+            if (_numberGenerator.NextDouble01() >= CurrProbability)
             {
                 SuccessPage = SuccessPage ?? new ExamSuccessPage();
                 return SuccessPage;
