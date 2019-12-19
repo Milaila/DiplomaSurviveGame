@@ -28,14 +28,14 @@ namespace DiplomaSurvive
         public BaseDeductionCheck 
         (
             BaseContext context, 
-            ICollection<BaseCheck> checks, 
+            IStore<BaseCheck> checks, 
             IDeductionStore deductionStore
         )
         {
             _context = context ?? throw new ArgumentNullException("Context must be not null");
             _deductionStore = deductionStore ?? throw new ArgumentNullException("Deduction store must be not null");
             _generator = new DefaultNumberGenerator();
-            InitChecks(checks);
+            InitChecks(checks.GetAll());
         }
 
         public Deduction CheckForDeduction()
