@@ -8,13 +8,34 @@ namespace DiplomaSurvive
 {
     public class Play
     {
+        protected BaseContext _context;
         protected INumberGenerator _numberGenerator;
         public IStore<IExam> ExamStore { get; protected set; }
+        public IStore<ICheck> CheckStore { get; protected set; }
+        public IPlayEventStore EventStore { get; protected set; }
 
-        public Play(INumberGenerator numberGenerator)
+        public Play(INumberGenerator numberGenerator, BaseContext context)
         {
             _numberGenerator = numberGenerator;
+            _context = context;
             InitExamStore();
+            //InitCheckStore();
+        }
+        public void InitCheckStore()
+        {
+            CheckStore = new BaseStore<ICheck>()
+            {
+                new BaseCheck()
+                {
+                    CheckChain = new CheckLastClickTime(_context)
+                    {
+                        MinTimeAfterClick = 2,
+                        DeductionProbabilityMin = 0.004,
+                        MaxTimeAfterClick = 60,
+                        DeductionProbabilityMax = 0.002
+                    }
+                }
+            };
         }
         public void InitExamStore()
         {
@@ -35,7 +56,7 @@ namespace DiplomaSurvive
                 {
                     RootPage = new SimilarPageExam(Questions.CHOOSE_SUBJECT, Answers.Subjects.LITERATURE,
                         Answers.Subjects.SPANISH, 0.75, 0.9, FullExamPages.DoNotKnowAnswersContinueBomb()),
-                    Type = ExamType.EIT,
+                    Type = ExamType.Universal,
                     DeductionProbability = 0.5
                 },
                 new ExamTree()

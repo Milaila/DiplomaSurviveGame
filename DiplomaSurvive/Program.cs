@@ -73,7 +73,7 @@ namespace DiplomaSurvive
 
         public static void Check3()
         {
-            Play play = new Play(null);
+            Play play = new Play(null, new BaseContext());
             var exams = play.ExamStore;
             foreach(var exam in exams.GetAll())
             {
