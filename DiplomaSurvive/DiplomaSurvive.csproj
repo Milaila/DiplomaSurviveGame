@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Checks\CheckLastClickTime.cs" />
     <Compile Include="Context\EventsContext.cs" />
     <Compile Include="Exams\SimilarPageExam.cs" />
     <Compile Include="Interfaces\ICheck.cs" />

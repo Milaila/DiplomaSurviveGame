@@ -9,10 +9,10 @@ namespace DiplomaSurvive
     public class BaseCheckStep : ICheckStep, ICloneable<BaseCheckStep>
     {
         protected ICheckStep _nextStep;
-        [field:NonSerialized]
+        [field: NonSerialized]
         protected BaseContext _context;
         public bool NeedCheck { get; protected set; }
-        [field:NonSerialized]
+        [field: NonSerialized]
         public event ValueChanged OnNeedCheck;
         public Func<double> CheckFunc;
         public TryHandleDelegate TryHandleFunc;
@@ -54,7 +54,7 @@ namespace DiplomaSurvive
             }
             return _nextStep.Check();
         }
-        protected void AskForCheck()
+        public void AskForCheck()
         {
             if (NeedCheck == false)
             {
