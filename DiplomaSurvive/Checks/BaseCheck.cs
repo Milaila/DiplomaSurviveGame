@@ -38,8 +38,11 @@ namespace DiplomaSurvive
         }
         public virtual void NeedCheck()
         {
-            IsDirty = true;
-            OnDirty?.Invoke();
+            if (IsDirty == false)
+            {
+                OnDirty?.Invoke();
+                IsDirty = true;
+            }
         }
         BaseCheck ICloneable<BaseCheck>.Clone()
         {

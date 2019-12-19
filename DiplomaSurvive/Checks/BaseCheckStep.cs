@@ -56,8 +56,11 @@ namespace DiplomaSurvive
         }
         protected void AskForCheck()
         {
-            NeedCheck = true;
-            OnNeedCheck?.Invoke();
+            if (NeedCheck == false)
+            {
+                OnNeedCheck?.Invoke();
+                NeedCheck = true;
+            }
         }
         protected virtual bool TryHandle(ref double probability)
         {
